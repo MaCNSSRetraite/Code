@@ -1,6 +1,6 @@
 package com.macnss.Model;
 
-import static com.macnss.helpers.helpers.*;
+import static com.macnss.helpers.Helpers.*;
 public class Agent {
     private int id;
     private String email;
