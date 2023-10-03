@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-import static com.macnss.helpers.helpers.calculePrixRetraite;
+import static com.macnss.helpers.Helpers.calculePrixRetraite;
 
 public class PatientImpl implements PatientDao{
     @Override

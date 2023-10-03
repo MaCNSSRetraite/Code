@@ -1,6 +1,6 @@
 package com.macnss.Model;
 
-import static com.macnss.helpers.helpers.*;
+import static com.macnss.helpers.Helpers.*;
 
 public class Medicament {
     private int id;
