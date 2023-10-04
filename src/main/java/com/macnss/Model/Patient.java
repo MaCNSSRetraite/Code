@@ -1,6 +1,6 @@
 package com.macnss.Model;
 
-import static com.macnss.helpers.Helpers.*;
+import static com.macnss.helpers.helpers.*;
 
 public class Patient {
     private String matrecule;

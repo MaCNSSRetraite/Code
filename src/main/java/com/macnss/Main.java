@@ -579,6 +579,7 @@ public class Main {
                                         prenom = scanner.nextLine();
                                         System.out.println("Entrez salere d'employe");
                                         salere = scanner.nextFloat();
+                                        System.out.println("Entrez la date de naissance: ");
                                         System.out.println("Entrez totale des Jours de Travail d'employe");
                                         totaleJourTravail = scanner.nextInt();
                                         scanner.nextLine();

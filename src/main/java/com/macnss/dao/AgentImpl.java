@@ -3,6 +3,7 @@ package com.macnss.dao;
 import com.macnss.DBconnection.DBconnection;
 import com.macnss.Model.Agent;
 import com.macnss.Model.Dossier;
+import com.macnss.helpers.helpers;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.Connection;

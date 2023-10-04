@@ -3,6 +3,7 @@ package com.macnss.helpers;
 import java.util.Random;
 
 import static java.lang.String.format;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -12,7 +13,13 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class helpers {
-    public static int generateCode(){
+    public static int generateCode() {
+        int min = 100000; // Minimum 6-digit code
+        int max = 999999; // Maximum 6-digit code
+
+        return ThreadLocalRandom.current().nextInt(min, max + 1);
+    }
+    /*public static int generateCode(){
         Random rand = new Random();
 
         int code = rand.nextInt(999999);
@@ -20,7 +27,7 @@ public class helpers {
         String codeString = format("%06d", code);
 
         return Integer.parseInt(codeString);
-    }
+    }*/
     public static Boolean sendMail(String body,String subject ,String email) {
         final String username = "amina.el.hakik2@gmail.com";
         final String password = "iryzwtvdahnvechw";
@@ -56,7 +63,103 @@ public class helpers {
     static String rougeClairColor = "\u001B[91m";
     static int td_lenght;
     static int td_lenght_empty;
+    /*public static String createTable(String td,String color){
+        String tr = jauneColor + "|";
+        if (td == ""){
+            tr = jauneColor + "+";
+            for (int i=0; i<90; i++){
+                tr += "-";
+            }
+            tr += "+";
+            tr += defautColor;
+        } else if (td == "style2") {
+            tr = jauneColor + "+";
+            for (int i=0; i<59; i++){
+                tr += "-";
+            }
+            tr += "+";
+            for (int i=0; i<30; i++){
+                tr += "-";
+            }
+            tr += "+";
+            tr += defautColor;
+        } else {
+            td_lenght = td.length();
+            td_lenght_empty = (90 - td_lenght)/2;
+            tr += color;
+            for (int i=0; i<td_lenght_empty; i++){
+                tr += " ";
+            }
+            tr += td;
+            if (((90 - td_lenght) % 2) == 1){
+                for (int i=0; i<td_lenght_empty+1; i++){
+                    tr += " ";
+                }
+            }else {
+                for (int i=0; i<td_lenght_empty; i++){
+                    tr += " ";
+                }
+            }
+            tr += jauneColor + "|";
+            tr += defautColor;
+        }
+        return tr;
+    }
+*/
 
+  /*  public static String createTableAgents(String td){
+        String tr = jauneColor + "+";
+        if (td == "empty1"){
+            for (int i=0; i<151; i++){
+                tr += "-";
+            }
+            tr += "+";
+            tr += defautColor;
+        }
+        else if (td == "empty2"){
+            for (int i=0; i<37; i++){
+                tr += "-";
+            }
+            tr += "+";
+            for (int i=0; i<37; i++){
+                tr += "-";
+            }
+            tr += "+";
+            for (int i=0; i<37; i++){
+                tr += "-";
+            }
+            tr += "+";
+            for (int i=0; i<37; i++){
+                tr += "-";
+            }
+            tr += "+";
+            tr += defautColor;
+        }
+        else {
+            tr = jauneColor + "|";
+            td_lenght = td.length();
+            td_lenght_empty = (151 - td_lenght)/2;
+            tr += rougeClairColor;
+            for (int i=0; i<td_lenght_empty; i++){
+                tr += " ";
+            }
+            tr += td;
+            if (((153 - td_lenght) % 2) == 1){
+                for (int i=0; i<td_lenght_empty+1; i++){
+                    tr += " ";
+                }
+            }else {
+                for (int i=0; i<td_lenght_empty; i++){
+                    tr += " ";
+                }
+            }
+            tr += jauneColor;
+            tr += "|";
+            tr += defautColor;
+        }
+        return tr;
+    }
+*/
     public static String createTrAgents(){
         String td1 = "Id";
         String td2 = "Nom Agents";
@@ -414,7 +517,7 @@ public class helpers {
     public static String getRougeClairColor() {
         return rougeClairColor;
     }
-    //
+//
     public static String generateMatrecule(String nom, String prenom, String email,int Taille){
         String Matrecule = null;
 
@@ -443,7 +546,30 @@ public class helpers {
         double prixRetraite = calculPrixRetraite.get();
         return prixRetraite;
     }//lamda2
-
+    public static void createNabarSocietek(String nomSociete){
+        nomSociete=nomSociete.toUpperCase();
+        String nomSocieteUpperCasePlusSpace = "";
+        String space="";
+        for (int i = 0; i < nomSociete.length(); i++) {
+            nomSocieteUpperCasePlusSpace += nomSociete.charAt(i) + " ";
+        }
+        int spaceFull = 141-nomSocieteUpperCasePlusSpace.length();
+        for (int i = 0; i < spaceFull; i++) {
+            space+=" ";
+        }
+        String logo = purpleColor + "+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n"+defautColor;
+              logo += purpleColor + "|"+jauneColor+"\t+----------------------+"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
+              logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"         +  +         "+jauneColor+"|"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
+              logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"         +  +         "+jauneColor+"|"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
+              logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"   + + + +  + + + +   "+jauneColor+"|"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
+              logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"   + + + +  + + + +   "+jauneColor+"|"+rougeClairColor+ space + nomSocieteUpperCasePlusSpace + defautColor + "      " +purpleColor + "|\n"+defautColor;
+              logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"         +  +         "+jauneColor+"|"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
+              logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"         +  +         "+jauneColor+"|"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
+              logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"     M A  C N S S     "+jauneColor+"|"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
+              logo += purpleColor + "|"+jauneColor+"\t+----------------------+                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
+              logo += purpleColor + "+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n"+defautColor;
+        System.out.println(logo);
+    }
     public static String createTableEmployer(String emptyNoEmpty, String style){
         String tr = jauneColor;
 
