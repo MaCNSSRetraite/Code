@@ -13,13 +13,13 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class helpers {
-    public static int generateCode() {
+   /* public static int generateCode() {
         int min = 100000; // Minimum 6-digit code
         int max = 999999; // Maximum 6-digit code
 
         return ThreadLocalRandom.current().nextInt(min, max + 1);
-    }
-    /*public static int generateCode(){
+    }*/
+    public static int generateCode(){
         Random rand = new Random();
 
         int code = rand.nextInt(999999);
@@ -27,7 +27,7 @@ public class helpers {
         String codeString = format("%06d", code);
 
         return Integer.parseInt(codeString);
-    }*/
+    }
     public static Boolean sendMail(String body,String subject ,String email) {
         final String username = "amina.el.hakik2@gmail.com";
         final String password = "iryzwtvdahnvechw";
