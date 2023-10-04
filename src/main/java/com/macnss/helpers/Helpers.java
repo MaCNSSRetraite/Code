@@ -536,7 +536,7 @@ public class helpers {
             return (int) Math.round(nombreDeMoisDouble);
         };
         return calculMois.apply(nombreDeJours);
-    }//lamda1333
+    }//lamda1
     public static double calculePrixRetraite(float salaire, int totaleJourTravail){
         int nombreDeMois = calculerNombreMois(totaleJourTravail);
         int nombreDeFoisDe216 = (totaleJourTravail-3240)/216;
