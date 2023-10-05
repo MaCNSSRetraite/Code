@@ -53,7 +53,7 @@ public class helpers {
     //static String purpleColor = "\u001B[35m";
     //static String defautColor = "\u001B[0m";
     //static String vertClairColor = "\u001B[92m";
-    static String rougeClairColor = "\u001B[91m";
+    //static String rougeClairColor = "\u001B[91m";
     static int td_lenght;
     static int td_lenght_empty;
   /*  public static String createTable(String td,String color){
@@ -754,7 +754,8 @@ public class helpers {
                 //tr += " ";
                 tr = " ";
             }
-            tr += emptyNoEmpty;
+            //tr += emptyNoEmpty;
+            tr = emptyNoEmpty;
             if (modulo_emptyNoEmpty_lenght_2 == 1){
                 for (int i=0; i<demi_emptyNoEmpty_lenght_empty+1; i++){
                     tr += " ";
