@@ -34,6 +34,7 @@ public class SalaireImpl implements SalaireDao{
                     }
                     float moyenne = salaire/countSalaire;
                     String query3 = "UPDATE `patient` SET `salere`=? WHERE `matrecule`=?";
+
                     try (PreparedStatement preparedStatement3 = con.prepareStatement(query3);){
                         preparedStatement3.setFloat(1,moyenne);
                         preparedStatement3.setString(2,matrecule);

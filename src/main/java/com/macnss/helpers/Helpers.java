@@ -526,6 +526,8 @@ public class helpers {
 
         return Matrecule;
     };
+
+
     public static int calculerNombreMois(int nombreDeJours) {
         final double JOURS_PAR_MOIS = 26;
         Function<Integer, Integer> calculMois = (jours) -> {
@@ -534,8 +536,10 @@ public class helpers {
         };
         return calculMois.apply(nombreDeJours);
     }//lamda1
-    public static double calculePrixRetraite(float salaire, int totaleJourTravail){
-        // calcule %
+
+
+
+    /*public static double calculePrixRetraite(float salaire, int totaleJourTravail) {
         double pourcentageReduction;
 
         if (totaleJourTravail <= 3240) {
@@ -547,7 +551,21 @@ public class helpers {
             pourcentageReduction = 50.0 + nombreDeFoisDe216;
         }
 
-        
+        Supplier<Double> calculprixRetraiteParMois = () -> salaire * (pourcentageReduction / 100.0);
+        double prixRetraiteParMois = calculprixRetraiteParMois.get();
+
+        return contSalaireRetreite((float) prixRetraiteParMois);
+    }*/
+
+
+
+
+
+
+
+
+
+    public static double calculePrixRetraite(float salaire, int totaleJourTravail){
         if (totaleJourTravail<=3240) {
             Supplier<Double> calculprixRetraiteParMois = () ->
                     salaire * (50 / 100.0);

@@ -164,39 +164,30 @@ public class SocieteImpl implements SocieteDao{
                     if (resultSet3.next()) {
                         int code = generateCode();
                         Matrecule += code;
-                        String query2 = "INSERT INTO patient (matrecule, nom_P, prenom_P, email, statusRetraite, prixRetraite, matriculeSociete, totaleJourTravail, date_naissance) VALUES (?,?,?,?,?,?,?,?,?)";
+                        String query2 = "INSERT INTO patient (matrecule, nom_P, prenom_P, email, statusRetraite, prixRetraite, matriculeSociete, totaleJourTravail, date_naissance,salere) VALUES (?,?,?,?,?,?,?,?,?,?)";
                         try (PreparedStatement preparedStatement2 = con.prepareStatement(query2);){
                             preparedStatement2.setString(1,Matrecule);
                             preparedStatement2.setString(2,patient.getNom());
                             preparedStatement2.setString(3,patient.getPrenom());
                             preparedStatement2.setString(4,patient.getemail());
-                            preparedStatement2.setString(6,StatusRetraite);
-                            preparedStatement2.setFloat(7,PrixRetraite);
-                            preparedStatement2.setString(8,patient.getMatreculeSociete());
-                            preparedStatement2.setInt(9,totaleJourTravail);
-                            preparedStatement2.setString(10,patient.getDate_naissance());
+                            preparedStatement2.setString(5,StatusRetraite);
+                            preparedStatement2.setFloat(6,PrixRetraite);
+                            preparedStatement2.setString(7,patient.getMatreculeSociete());
+                            preparedStatement2.setInt(8,totaleJourTravail);
+                            preparedStatement2.setString(9,patient.getDate_naissance());
+                            preparedStatement2.setFloat(10,patient.getSalere());
 
                             preparedStatement2.executeUpdate();
+                        } catch (SQLException se){
+                            se.printStackTrace();
+                        }
+                        String query4 = "INSERT INTO `salaire`(`matrecule`, `salaire`, `date`) VALUES (?,?,?)";
+                        try (PreparedStatement preparedStatement4 = con.prepareStatement(query4);){
+                            preparedStatement4.setString(1,Matrecule);
+                            preparedStatement4.setFloat(2,patient.getSalere());
+                            preparedStatement4.setDate(3, java.sql.Date.valueOf(dateAjourdhui));
 
-                            String query4 = "INSERT INTO salaire (matrecule, date, salaire) VALUES (?,?,?)";
-                            try (PreparedStatement preparedStatement4 = con.prepareStatement(query4);){
-                                preparedStatement4.setString(1,Matrecule);
-                                preparedStatement4.setString(2,dateAjourdhui);
-                                preparedStatement4.setFloat(3,patient.getSalere());
-
-                                preparedStatement4.executeUpdate();
-
-                                return true;
-                            } catch (SQLException se){
-                                se.printStackTrace();
-                            }finally {
-                                try {
-                                    con.close();
-                                } catch (SQLException e) {
-                                    throw new RuntimeException(e);
-                                }
-                            }
-
+                            preparedStatement4.executeUpdate();
                             return true;
                         } catch (SQLException se){
                             se.printStackTrace();
@@ -209,40 +200,30 @@ public class SocieteImpl implements SocieteDao{
                         }
                         return true;
                     }else {
-                        String query2 = "INSERT INTO patient (matrecule, nom_P, prenom_P, email, salere, statusRetraite, prixRetraite, matriculeSociete, totaleJourTravail, date_naissance) VALUES (?,?,?,?,?,?,?,?,?,?)";
+                        String query2 = "INSERT INTO patient (matrecule, nom_P, prenom_P, email, statusRetraite, prixRetraite, matriculeSociete, totaleJourTravail, date_naissance,salere) VALUES (?,?,?,?,?,?,?,?,?,?)";
                         try (PreparedStatement preparedStatement2 = con.prepareStatement(query2);){
                             preparedStatement2.setString(1,Matrecule);
                             preparedStatement2.setString(2,patient.getNom());
                             preparedStatement2.setString(3,patient.getPrenom());
                             preparedStatement2.setString(4,patient.getemail());
-                            preparedStatement2.setFloat(5,Salere);
-                            preparedStatement2.setString(6,StatusRetraite);
-                            preparedStatement2.setFloat(7,PrixRetraite);
-                            preparedStatement2.setString(8,patient.getMatreculeSociete());
-                            preparedStatement2.setInt(9,totaleJourTravail);
-                            preparedStatement2.setString(10,patient.getDate_naissance());
+                            preparedStatement2.setString(5,StatusRetraite);
+                            preparedStatement2.setFloat(6,PrixRetraite);
+                            preparedStatement2.setString(7,patient.getMatreculeSociete());
+                            preparedStatement2.setInt(8,totaleJourTravail);
+                            preparedStatement2.setString(9,patient.getDate_naissance());
+                            preparedStatement2.setFloat(10,patient.getSalere());
 
                             preparedStatement2.executeUpdate();
-
-                            return true;
                         } catch (SQLException se){
                             se.printStackTrace();
-                        }finally {
-                            try {
-                                con.close();
-                            } catch (SQLException e) {
-                                throw new RuntimeException(e);
-                            }
                         }
-
-                        String query4 = "INSERT INTO salaire (matrecule, date, salaire) VALUES (?,?,?)";
+                        String query4 = "INSERT INTO `salaire`(`matrecule`, `salaire`, `date`) VALUES (?,?,?)";
                         try (PreparedStatement preparedStatement4 = con.prepareStatement(query4);){
                             preparedStatement4.setString(1,Matrecule);
-                            preparedStatement4.setString(2,dateAjourdhui);
-                            preparedStatement4.setFloat(3,patient.getSalere());
+                            preparedStatement4.setFloat(2,patient.getSalere());
+                            preparedStatement4.setDate(3, java.sql.Date.valueOf(dateAjourdhui));
 
                             preparedStatement4.executeUpdate();
-
                             return true;
                         } catch (SQLException se){
                             se.printStackTrace();
@@ -253,7 +234,6 @@ public class SocieteImpl implements SocieteDao{
                                 throw new RuntimeException(e);
                             }
                         }
-
                         return true;
                     }
                 } catch (SQLException se){
