@@ -6,11 +6,13 @@ import com.macnss.Model.Agent;
 import com.macnss.Model.Patient;
 import com.macnss.Model.Societe;
 import org.mindrot.jbcrypt.BCrypt;
-
+import java.sql.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -120,6 +122,8 @@ public class SocieteImpl implements SocieteDao{
                 Float PrixRetraite = null;
                 float Salere = patient.getSalere();
                 int totaleJourTravail = patient.getTotaleJourTravail();
+                String date_de_naissance = patient.getDateDeNaissance();
+
 
 
                 if (totaleJourTravail >= 3240) {
@@ -142,7 +146,7 @@ public class SocieteImpl implements SocieteDao{
                     if (resultSet3.next()) {
                         int code = generateCode();
                         Matrecule += code;
-                        String query2 = "INSERT INTO patient (matrecule, nom_P, prenom_P, email, salere, statusRetraite, prixRetraite, matriculeSociete, totaleJourTravail) VALUES (?,?,?,?,?,?,?,?,?)";
+                        String query2 = "INSERT INTO patient (matrecule, nom_P, prenom_P, email, salere, statusRetraite, prixRetraite, matriculeSociete, totaleJourTravail,date_de_naissance) VALUES (?,?,?,?,?,?,?,?,?,?)";
                         try (PreparedStatement preparedStatement2 = con.prepareStatement(query2);){
                             preparedStatement2.setString(1,Matrecule);
                             preparedStatement2.setString(2,patient.getNom());
@@ -153,7 +157,7 @@ public class SocieteImpl implements SocieteDao{
                             preparedStatement2.setFloat(7,PrixRetraite);
                             preparedStatement2.setString(8,patient.getMatreculeSociete());
                             preparedStatement2.setInt(9,totaleJourTravail);
-
+                            preparedStatement2.setString(10,date_de_naissance);
                             preparedStatement2.executeUpdate();
 
                             return true;

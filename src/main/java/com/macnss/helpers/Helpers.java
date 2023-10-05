@@ -13,12 +13,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class helpers {
-   /* public static int generateCode() {
-        int min = 100000; // Minimum 6-digit code
-        int max = 999999; // Maximum 6-digit code
 
-        return ThreadLocalRandom.current().nextInt(min, max + 1);
-    }*/
     public static int generateCode(){
         Random rand = new Random();
 
@@ -557,7 +552,7 @@ public class helpers {
         for (int i = 0; i < spaceFull; i++) {
             space+=" ";
         }
-        String logo = purpleColor + "+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n"+defautColor;
+        /*String logo = purpleColor + "+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n"+defautColor;
               logo += purpleColor + "|"+jauneColor+"\t+----------------------+"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
               logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"         +  +         "+jauneColor+"|"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
               logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"         +  +         "+jauneColor+"|"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
@@ -568,7 +563,7 @@ public class helpers {
               logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"     M A  C N S S     "+jauneColor+"|"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
               logo += purpleColor + "|"+jauneColor+"\t+----------------------+                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
               logo += purpleColor + "+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n"+defautColor;
-        System.out.println(logo);
+        System.out.println(logo);*/
     }
     public static String createTableEmployer(String emptyNoEmpty, String style){
         String tr = jauneColor;

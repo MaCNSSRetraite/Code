@@ -546,7 +546,9 @@ public class Main {
                                 System.out.println("Menu");
                                 //System.out.println(createTable("", ""));
                                 System.out.println("1.Afficher les employes");
-                                System.out.println("2.Ajouter un employe");
+
+                                System.out.println("2.Ajouter un nouveau employe");
+                                System.out.println("3. Ajouter le nombre de jour et salaire pour un employé existant");
                                 System.out.println("3.Modifier un employe");
                                 System.out.println("4.Supprimer un employe");
                                 System.out.println("5.Ajouter des jours de travail dans un mois a un employe");
@@ -577,19 +579,19 @@ public class Main {
                                         nom = scanner.nextLine();
                                         System.out.println("Entrez le prenom d'employe");
                                         prenom = scanner.nextLine();
-                                        System.out.println("Entrez salere d'employe");
-                                        salere = scanner.nextFloat();
+                                        //System.out.println("Entrez salere d'employe");
+                                        //salere = scanner.nextFloat();
                                         System.out.println("Entrez la date de naissance: ");
-                                        System.out.println("Entrez totale des Jours de Travail d'employe");
-                                        totaleJourTravail = scanner.nextInt();
+                                        //System.out.println("Entrez totale des Jours de Travail d'employe");
+                                        //totaleJourTravail = scanner.nextInt();
                                         scanner.nextLine();
                                         patient = Patient.builder()
                                                 .email(email)
                                                 .nom(nom)
                                                 .prenom(prenom)
-                                                .salere(salere)
+                                                //.salere(salere)
                                                 .matreculeSociete(preferences.get("MATRECULE", "Matrecule De Societe"))
-                                                .totaleJourTravail(totaleJourTravail)
+                                                //4.totaleJourTravail(totaleJourTravail)
                                                 .build();
                                         boolean resultat = societeDao.ajouterEmploye(patient);
                                         if (resultat == true){

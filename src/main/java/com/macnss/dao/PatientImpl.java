@@ -98,7 +98,9 @@ public class PatientImpl implements PatientDao{
                             resultSet.getString("statusRetraite"),
                             resultSet.getFloat("prixRetraite"),
                             resultSet.getInt("totaleJourTravail"),
-                            resultSet.getString("matriculeSociete"));
+                            resultSet.getString("matriculeSociete"),
+                            resultSet.getString("date_de_naissance")
+                    );
                     return patient;
             }else {
                 patient = Patient.builder()
