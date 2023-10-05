@@ -604,7 +604,8 @@ public class helpers {
             for (int i = 0; i < 173; i++) {
                 tr += "-";
             }
-            tr += "+" + defautColor;
+            //tr += "+" + defautColor;
+            tr += "+" ;
         } else if (emptyNoEmpty == "Empty" && style == "Style2") {
             tr += "+";
             for (int i = 0; i < 6; i++) {
@@ -613,23 +614,27 @@ public class helpers {
                 }
                 tr += "+";
             }
-            tr += defautColor;
+            //tr += defautColor;
+
         } else if (emptyNoEmpty == "NoEmpty" && style == "Style1"){
             tr += "|";
             for (int i = 0; i < demi_td_lenght_empty; i++) {
                 tr += " ";
             }
-            tr += rougeClairColor + td + jauneColor;
+            //tr += rougeClairColor + td + jauneColor;
+            tr +=td;
             for (int i = 0; i < demi_td_lenght_empty; i++) {
                 tr += " ";
             }
-            tr += "|" + defautColor;
+            //tr += "|" + defautColor;
+            tr += "|" ;
         } else if (emptyNoEmpty == "NoEmpty" && style == "Style2") {
             tr += "|";
             for (int j = 0; j < demi_td1_lenght_empty; j++) {
                 tr += " ";
             }
-            tr += purpleColor + td1 + jauneColor;
+            //tr += purpleColor + td1 + jauneColor;
+            tr += td1;
             for (int j = 0; j < demi_td1_lenght_empty + 1; j++) {
                 tr += " ";
             }
