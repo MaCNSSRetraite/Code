@@ -49,7 +49,7 @@ public class helpers {
             return false;
         }
     }
-    static String jauneColor = "\u001B[93m";
+    //static String jauneColor = "\u001B[93m";
     static String purpleColor = "\u001B[35m";
     static String defautColor = "\u001B[0m";
     static String vertClairColor = "\u001B[92m";
@@ -365,18 +365,22 @@ public class helpers {
         //String tr = jauneColor + "|" +purpleColor;
         String tr = "|";
         if (sans == "sans1"){
-            tr = jauneColor + "+";
+            //tr = jauneColor + "+";
+            tr =  "+";
             for (int i=0; i<146; i++){
                 tr += "-";
             }
-            tr += jauneColor + "+" + defautColor;
+            //tr += jauneColor + "+" + defautColor;
+            tr += "+";
         } if (sans == "sans2"){
-            tr = jauneColor + "+";
+           // tr = jauneColor + "+";
+            tr =  "+";
             for (int j = 0 ; j<3; j++){
                 for (int i=0; i<48; i++){
                     tr += "-";
                 }
-                tr += jauneColor + "+" ;
+                //tr += jauneColor + "+" ;
+                tr += "+" ;
             }
             tr += defautColor;
         }if (sans == "sans3"){
@@ -387,7 +391,9 @@ public class helpers {
             for (int i=0; i<demi_td1_lenght_empty; i++){
                 tr += " ";
             }
-            tr += jauneColor + "|" +purpleColor;
+
+           // tr += jauneColor + "|" +purpleColor;
+            tr += "|" ;
             for (int i=0; i<demi_td2_lenght_empty; i++){
                 tr += " ";
             }
