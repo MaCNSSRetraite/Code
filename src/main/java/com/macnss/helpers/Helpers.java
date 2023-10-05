@@ -50,8 +50,8 @@ public class helpers {
         }
     }
     //static String jauneColor = "\u001B[93m";
-    static String purpleColor = "\u001B[35m";
-    static String defautColor = "\u001B[0m";
+    //static String purpleColor = "\u001B[35m";
+    //static String defautColor = "\u001B[0m";
     static String vertClairColor = "\u001B[92m";
     static String rougeClairColor = "\u001B[91m";
     static int td_lenght;
@@ -340,7 +340,8 @@ public class helpers {
             }
             //tr += jauneColor + "|";
             tr +=  "|";
-            tr += defautColor;
+            //tr += defautColor;
+
         }
         return tr;
     }
@@ -382,7 +383,7 @@ public class helpers {
                 //tr += jauneColor + "+" ;
                 tr += "+" ;
             }
-            tr += defautColor;
+            //tr += defautColor;
         }if (sans == "sans3"){
             for (int i=0; i<demi_td1_lenght_empty; i++){
                 tr += " ";
@@ -431,7 +432,7 @@ public class helpers {
             }
            // tr += jauneColor + "|";
             tr += "|";
-            tr += defautColor;
+            //tr += defautColor;
         }
         return tr;
     }
@@ -731,7 +732,8 @@ public class helpers {
             for (int j = 0; j < demi_td6_lenght_empty; j++) {
                 tr += " ";
             }
-            tr += "|" + defautColor;
+            //tr += "|" + defautColor;
+            tr += "|" ;
         } else {
             int emptyNoEmpty_lenght = emptyNoEmpty.length();
             int emptyNoEmpty_lenght_empty = 28 - emptyNoEmpty_lenght;
