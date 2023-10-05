@@ -12,8 +12,7 @@ import static com.macnss.helpers.helpers.*;
 public class SalaireImpl implements SalaireDao{
     @Override
     public void calculeSalereMoyenne() {
-        float salaire = 0;
-        int countSalaire = 0;
+
         Connection con = DBconnection.getConnection();
         String query = "SELECT * FROM patient";
         try (PreparedStatement preparedStatement = con.prepareStatement((query))){
@@ -25,6 +24,9 @@ public class SalaireImpl implements SalaireDao{
                 try (PreparedStatement preparedStatement2 = con.prepareStatement((query2))){
                     preparedStatement2.setString(1,matrecule);
                     ResultSet resultSet2 = preparedStatement2.executeQuery();
+
+                    float salaire = 0;
+                    int countSalaire = 0;
 
                     while (resultSet2.next()){
                         salaire += resultSet2.getInt("salaire");

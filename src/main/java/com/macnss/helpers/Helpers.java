@@ -49,7 +49,7 @@ public class helpers {
             return false;
         }
     }
-    //static String jauneColor = "\u001B[93m";
+    static String jauneColor = "\u001B[93m";
     static String purpleColor = "\u001B[35m";
     static String defautColor = "\u001B[0m";
     static String vertClairColor = "\u001B[92m";
@@ -502,9 +502,9 @@ public class helpers {
         System.out.println("Programme Fermé");
 
     }
-    /*public static String getJauneColor() {
+    public static String getJauneColor() {
         return jauneColor;
-    }*/
+    }
     /*public static String getDefautColor() {
         return defautColor;
     }*/
