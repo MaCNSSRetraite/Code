@@ -535,6 +535,19 @@ public class helpers {
         return calculMois.apply(nombreDeJours);
     }//lamda1
     public static double calculePrixRetraite(float salaire, int totaleJourTravail){
+        // calcule %
+        double pourcentageReduction;
+
+        if (totaleJourTravail <= 3240) {
+            pourcentageReduction = 50.0;
+        } else if (totaleJourTravail >= 7560) {
+            pourcentageReduction = 70.0;
+        } else {
+            int nombreDeFoisDe216 = (totaleJourTravail - 3240) / 216;
+            pourcentageReduction = 50.0 + nombreDeFoisDe216;
+        }
+
+        
         if (totaleJourTravail<=3240) {
             Supplier<Double> calculprixRetraiteParMois = () ->
                     salaire * (50 / 100.0);
