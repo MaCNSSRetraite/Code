@@ -45,7 +45,7 @@ public class Medicament {
 
     @Override
     public String toString() {
-        String tr = getJauneColor() + "|";
+        String tr = /*getJauneColor() +*/ "|";
 
         tr += createTrTdTrMedicamentConsultationMedicale(String.valueOf(id));
         tr += createTrTdTrMedicamentConsultationMedicale(nom_m);

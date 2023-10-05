@@ -14,12 +14,12 @@ public class Patient {
     private float prixRetraite;
     private int totaleJourTravail;
     private String matreculeSociete;
-     private String date_de_naissance;
+    private String date_naissance;
 
     public Patient() {
     }
 
-    public Patient(String matrecule, String nom, String prenom, String email, float salere, String statusRetraite, float prixRetraite, int totaleJourTravail, String matreculeSociete, String date_de_naissance) {
+    public Patient(String matrecule, String nom, String prenom, String email, float salere, String statusRetraite, float prixRetraite, int totaleJourTravail, String matreculeSociete, String date_naissance) {
         this.matrecule = matrecule;
         this.nom = nom;
         this.prenom = prenom;
@@ -29,7 +29,7 @@ public class Patient {
         this.prixRetraite = prixRetraite;
         this.totaleJourTravail = totaleJourTravail;
         this.matreculeSociete = matreculeSociete;
-        this.date_de_naissance = date_de_naissance;
+        this.date_naissance = date_naissance;
     }
 
     public String getMatrecule() {
@@ -68,8 +68,6 @@ public class Patient {
         return salere;
     }
 
-    public String getDateDeNaissance() { return date_de_naissance; }
-
     public void setSalere(float salere) {
         this.salere = salere;
     }
@@ -106,13 +104,21 @@ public class Patient {
         this.matreculeSociete = matreculeSociete;
     }
 
+    public String getDate_naissance() {
+        return date_naissance;
+    }
+
+    public void setDate_naissance(String date_naissance) {
+        this.date_naissance = date_naissance;
+    }
+
     public static PatientBuilder builder(){
         return new PatientBuilder();
     }
 
     @Override
     public String toString() {
-        String tr = getJauneColor() + "|";
+        String tr = /*getJauneColor() +*/ "|";
 
         tr += createTableEmployer(matrecule,"");
         tr += createTableEmployer(nom,"");

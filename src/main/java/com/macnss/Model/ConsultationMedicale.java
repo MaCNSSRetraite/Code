@@ -1,7 +1,7 @@
 package com.macnss.Model;
 
 import static com.macnss.helpers.helpers.createTrTdTrMedicamentConsultationMedicale;
-import static com.macnss.helpers.helpers.getJauneColor;
+//import static com.macnss.helpers.helpers.getJauneColor;
 
 public class ConsultationMedicale {
     private int id;
@@ -46,7 +46,7 @@ public class ConsultationMedicale {
 
     @Override
     public String toString() {
-        String tr = getJauneColor() + "|";
+        String tr = /*getJauneColor() +*/ "|";
 
         tr += createTrTdTrMedicamentConsultationMedicale(String.valueOf(id));
         tr += createTrTdTrMedicamentConsultationMedicale(nom_CM);

@@ -4,6 +4,7 @@ import com.macnss.Model.*;
 import com.macnss.dao.*;
 import com.macnss.helpers.*;
 
+import java.util.Date;
 import java.util.Scanner;
 import java.util.prefs.Preferences;
 
@@ -20,6 +21,7 @@ public class Main {
         MedicamentDao medicamentDao = new MedicamentImpl();
         PatientDao patientDao = new PatientImpl();
         SocieteDao societeDao = new SocieteImpl();
+        SalaireDao salaireDao = new SalaireImpl();
 
         Preferences preferences = Preferences.userNodeForPackage(Main.class);
 
@@ -43,7 +45,10 @@ public class Main {
         String body;
         String subject;
 
+        String date_naissance;
+
         do {
+            salaireDao.calculeSalereMoyenne();
             patientDao.checkRetraiteCalculerPrixRetraite();
             preferences.put("EMAIL", "null");
             preferences.put("NOM", "null");
@@ -53,18 +58,17 @@ public class Main {
 
             //System.out.println(createTable("", ""));
             System.out.println("Menu");
-            //System.out.println(createTable("", ""));
-            System.out.println("1. Admin");
-            System.out.println("2. Agent");
-            System.out.println("3. Patient ou Employe");
-            System.out.println("4. Societe");
+           // System.out.println(createTable("", ""));
+            System.out.println("1.Vous Etes Admin");
+            System.out.println("2.Vous Etes Agent");
+            System.out.println("3.Vous Etes Patient ou Employe");
+            System.out.println("4.Vous Etes Societe");
             System.out.println("0.Quitter");
-            //System.out.println(createTable("", ""));
+           // System.out.println(createTable("", ""));
 
             System.out.print("Enterez votre choix (0-4): ");
-            choix = scanner.nextInt();
-            scanner.nextLine();
-            //clearConsole(28);
+            choix = tryParse(scanner.nextLine());
+          //  clearConsole(28);
 
             switch (choix) {
                 case 1:
@@ -93,7 +97,7 @@ public class Main {
 
                        // System.out.println(createTable("", ""));
                         System.out.println("Menu");
-                       // System.out.println(createTable("", ""));
+                      //  System.out.println(createTable("", ""));
                         System.out.println("1.Afficher les Agents");
                         System.out.println("2.Ajouter un Agent");
                         System.out.println("3.Modifier un Agent");
@@ -102,24 +106,23 @@ public class Main {
                         //System.out.println(createTable("", ""));
 
                         System.out.print("Enterez votre choix (0-4): ");
-                        choix = scanner.nextInt();
-                        scanner.nextLine();
+                        choix = tryParse(scanner.nextLine());
                        // clearConsole(30);
 
                         switch (choix){
                             case 1:
-                                //System.out.println(createTableAgents("empty1"));
-                                System.out.println("List des Agents");
-                                //System.out.println(createTableAgents("empty2"));
+                                System.out.println(createTableAgents("empty1"));
+                                System.out.println(createTableAgents("List des Agents"));
+                                System.out.println(createTableAgents("empty2"));
                                 System.out.println(createTrAgents());
-                                //System.out.println(createTableAgents("empty2"));
+                                System.out.println(createTableAgents("empty2"));
                                 adminDao.affichageAgent().forEach(System.out::println);
-                                //System.out.println(createTableAgents("empty2"));
+                                System.out.println(createTableAgents("empty2"));
                                 break;
                             case 2:
-                                //System.out.println(createTableAgents("empty1"));
-                                System.out.println("Ajouter un Agent");
-                                //System.out.println(createTableAgents("empty1"));
+                                System.out.println(createTableAgents("empty1"));
+                                System.out.println(createTableAgents("Ajouter un Agent"));
+                                System.out.println(createTableAgents("empty1"));
                                 System.out.println("Entrer Email D'Agent");
                                 email=scanner.nextLine();
 
@@ -146,9 +149,9 @@ public class Main {
                                 }
                                 break;
                             case 3:
-                              //  System.out.println(createTableAgents("empty1"));
-                                System.out.println("Modifier un Agent");
-                               // System.out.println(createTableAgents("empty1"));
+                                System.out.println(createTableAgents("empty1"));
+                                System.out.println(createTableAgents("Modifier un Agent"));
+                                System.out.println(createTableAgents("empty1"));
 
                                 System.out.println("Entrer Email D'Agent");
                                 email=scanner.nextLine();
@@ -176,9 +179,9 @@ public class Main {
                                 }
                                 break;
                             case 4:
-                               // System.out.println(createTableAgents("empty1"));
-                                System.out.println("Supprimer un Agent");
-                                //System.out.println(createTableAgents("empty1"));
+                                System.out.println(createTableAgents("empty1"));
+                                System.out.println(createTableAgents("Supprimer un Agent"));
+                                System.out.println(createTableAgents("empty1"));
                                 System.out.println("Entrer Email D'Agent");
                                 email=scanner.nextLine();
 
@@ -211,8 +214,7 @@ public class Main {
 
                     System.out.println("Le code de confirmation de confirmation est envoyer a votre adresse mail");
                     System.out.println("Entrer votre code de confirmation");
-                    codeConfirmation=scanner.nextInt();
-                    scanner.nextLine();
+                    codeConfirmation=tryParse(scanner.nextLine());
                     if (codeConfirmation == randomCode){
                         Agent agent = Agent.builder()
                                 .email(email)
@@ -234,36 +236,35 @@ public class Main {
 
                       //  clearConsole(30);
 
-                       // System.out.println(createTable("", ""));
+                        //System.out.println(createTable("", ""));
                         System.out.println("Menu");
-                       // System.out.println(createTable("", ""));
+                        //System.out.println(createTable("", ""));
                         System.out.println("1.Afficher les dossiers");
                         System.out.println("2.Ajouter un Dossier");
                         System.out.println("3.Modifier un Dossier");
                         System.out.println("4.Supprimer un Dossier");
                         System.out.println("5.comfirmer un Dossier");
                         System.out.println("0.Quitter");
-                        //System.out.println(createTable("", ""));
+                       // System.out.println(createTable("", ""));
 
                         System.out.print("Enterez votre choix (0-5): ");
-                        choix = scanner.nextInt();
-                        scanner.nextLine();
-                      //  clearConsole(30);
+                        choix = tryParse(scanner.nextLine());
+                       // clearConsole(30);
 
                         switch (choix){
                             case 1:
-                                //System.out.println(createTrDossiers("sans1"));
+                                System.out.println(createTrDossiers("sans1"));
                                 System.out.println(createTrDossiers("List des Dossiers"));
-                                //System.out.println(createTrDossiers("sans2"));
-                                //System.out.println(createTrDossiers("sans3"));
-                                //System.out.println(createTrDossiers("sans2"));
+                                System.out.println(createTrDossiers("sans2"));
+                                System.out.println(createTrDossiers("sans3"));
+                                System.out.println(createTrDossiers("sans2"));
                                 agentDao.affichageDossier().forEach(System.out::println);
-                                //System.out.println(createTrDossiers("sans2"));
+                                System.out.println(createTrDossiers("sans2"));
                                 break;
                             case 2:
-                               // System.out.println(createTableAgents("empty1"));
-                                System.out.println(("Ajouter un Dossier"));
-                                //System.out.println(createTableAgents("empty1"));
+                                System.out.println(createTableAgents("empty1"));
+                                System.out.println(createTableAgents("Ajouter un Dossier"));
+                                System.out.println(createTableAgents("empty1"));
 
                                 System.out.println("Entrer Matrecule de Patient");
                                 matrecule=scanner.nextLine();
@@ -277,12 +278,11 @@ public class Main {
                                 System.out.println(createTrMedicamentConsultationMedicale("sans2"));
 
                                 System.out.println("Entrer Id de Consultation Medicale");
-                                CM=scanner.nextInt();
-                                scanner.nextLine();
+                                CM=tryParse(scanner.nextLine());
 
 
                                 System.out.println(createTrMedicamentConsultationMedicale("sans1"));
-                                System.out.println("List des Medicaments");
+                                System.out.println(createTrMedicamentConsultationMedicale("List des Medicaments"));
                                 System.out.println(createTrMedicamentConsultationMedicale("sans2"));
                                 System.out.println(createTrMedicamentConsultationMedicale("sans3"));
                                 System.out.println(createTrMedicamentConsultationMedicale("sans2"));
@@ -290,8 +290,7 @@ public class Main {
                                 System.out.println(createTrMedicamentConsultationMedicale("sans2"));
 
                                 System.out.println("Entrer Id de Medicament");
-                                M=scanner.nextInt();
-                                scanner.nextLine();
+                                M=tryParse(scanner.nextLine());
 
                                 float prix_retour = dossierDao.calculeDossier(M, CM);
                                 Dossier dossier = Dossier.builder()
@@ -313,7 +312,7 @@ public class Main {
                                 System.out.println(createTrDossiers("Modifier un Dossier"));
                                 System.out.println(createTrDossiers("sans1"));
 
-                             //   clearConsole(2);
+                              //  clearConsole(2);
 
                                 System.out.println("Entrer Matrecule de Patient");
                                 matrecule=scanner.nextLine();
@@ -327,8 +326,7 @@ public class Main {
                                 System.out.println(createTrDossiers("sans2"));
 
                                 System.out.println("Entrer Id de Dossier");
-                                id=scanner.nextInt();
-                                scanner.nextLine();
+                                id=tryParse(scanner.nextLine());
 
                                 System.out.println(createTrMedicamentConsultationMedicale("sans1"));
                                 System.out.println(createTrMedicamentConsultationMedicale("List des Consultations Medicales"));
@@ -339,8 +337,7 @@ public class Main {
                                 System.out.println(createTrMedicamentConsultationMedicale("sans2"));
 
                                 System.out.println("Entrer Id de Consultation Medicale");
-                                CM=scanner.nextInt();
-                                scanner.nextLine();
+                                CM=tryParse(scanner.nextLine());
 
 
                                 System.out.println(createTrMedicamentConsultationMedicale("sans1"));
@@ -352,8 +349,7 @@ public class Main {
                                 System.out.println(createTrMedicamentConsultationMedicale("sans2"));
 
                                 System.out.println("Entrer Id de Medicament");
-                                M=scanner.nextInt();
-                                scanner.nextLine();
+                                M=tryParse(scanner.nextLine());
 
                                 prix_retour = dossierDao.calculeDossier(M, CM);
                                 dossier = Dossier.builder()
@@ -388,8 +384,7 @@ public class Main {
                                 System.out.println(createTrDossiers("sans2"));
 
                                 System.out.println("Entrer Id de Dossier");
-                                id=scanner.nextInt();
-                                scanner.nextLine();
+                                id=tryParse(scanner.nextLine());
 
                                 resultat = agentDao.supprisionDossier(id);
                                 if (resultat == true){
@@ -408,20 +403,18 @@ public class Main {
                                 System.out.println(createTrDossiers("sans2"));
 
                                 System.out.print("Enterez Id de Dossier");
-                                id = scanner.nextInt();
-                                scanner.nextLine();
+                                id = tryParse(scanner.nextLine());
 
-                                //System.out.println(createTable("", ""));
+                               // System.out.println(createTable("", ""));
                                 System.out.println("comfirmer un Dossier");
-                                //System.out.println(createTable("", ""));
+                               // System.out.println(createTable("", ""));
                                 System.out.println("-1.Refusé");
                                 System.out.println("0.En attente");
                                 System.out.println("1.Validé");
-                                //System.out.println(createTable("", ""));
+                               // System.out.println(createTable("", ""));
 
                                 System.out.print("Enterez votre choix (-1,0,1): ");
-                                status = scanner.nextInt();
-                                scanner.nextLine();
+                                status = tryParse(scanner.nextLine());
 
                                 resultat = agentDao.comfirmationDossier(id,status);
                                 if (resultat == true){
@@ -465,12 +458,11 @@ public class Main {
                             System.out.println("2.Voir l'Historique D'un' dossier");
                             System.out.println("3.Voir êtes-vous retraité ?");
                             System.out.println("0.Quitter");
-                           // System.out.println("", ""));
+                           // System.out.println(createTable("", ""));
 
                             System.out.print("Enterez votre choix (0-3): ");
-                            choix = scanner.nextInt();
-                            scanner.nextLine();
-                         //   clearConsole(30);
+                            choix = tryParse(scanner.nextLine());
+                      //      clearConsole(30);
 
                             switch (choix){
                                 case 1:
@@ -484,8 +476,7 @@ public class Main {
                                     break;
                                 case 2:
                                     System.out.println("Entrer Id de Dossier");
-                                    id=scanner.nextInt();
-                                    scanner.nextLine();
+                                    id=tryParse(scanner.nextLine());
 
                                     System.out.println(createTrDossiers("sans1"));
                                     System.out.println(createTrDossiers("List des Dossiers"));
@@ -510,16 +501,15 @@ public class Main {
                 case 4:
                     //System.out.println(createTable("", ""));
                     System.out.println("Menu");
-                    //System.out.println("", ""));
+                    //System.out.println(createTable("", ""));
                     System.out.println("1.Login Societe");
                     System.out.println("2.S'inscrire Societe");
                     System.out.println("0.Quitter");
-                    //System.out.println(createTable("", ""));
+                   // System.out.println(createTable("", ""));
 
                     System.out.print("Enterez votre choix (0-2): ");
-                    choix = scanner.nextInt();
-                    scanner.nextLine();
-                    //clearConsole(30);
+                    choix = tryParse(scanner.nextLine());
+                 //   clearConsole(30);
                     switch (choix){
                         case 1:
                             System.out.println("Entrez votre email: ");
@@ -539,26 +529,23 @@ public class Main {
                                 preferences.put("MATRECULE", societe.getMatrecule());
 
                                // clearConsole(30);
-                                //createNabarSociete(preferences.get("NOM", "Nom De Societe"));
-                              //  clearConsole(5);
+                              //  createNabarSociete(preferences.get("NOM", "Nom De Societe"));
+                                //clearConsole(5);
 
                                // System.out.println(createTable("", ""));
                                 System.out.println("Menu");
-                                //System.out.println(createTable("", ""));
+                               // System.out.println(createTable("", ""));
                                 System.out.println("1.Afficher les employes");
-
-                                System.out.println("2.Ajouter un nouveau employe");
-                                System.out.println("3. Ajouter le nombre de jour et salaire pour un employé existant");
+                                System.out.println("2.Ajouter un employe");
                                 System.out.println("3.Modifier un employe");
                                 System.out.println("4.Supprimer un employe");
                                 System.out.println("5.Ajouter des jours de travail dans un mois a un employe");
                                 System.out.println("6.Ajouter un employe avec son matrecule");
                                 System.out.println("0.Quitter");
-                                //System.out.println(createTable("", ""));
+                               // System.out.println(createTable("", ""));
 
                                 System.out.print("Enterez votre choix (0-6): ");
-                                choix = scanner.nextInt();
-                                scanner.nextLine();
+                                choix = tryParse(scanner.nextLine());
                                // clearConsole(30);
                                 switch (choix){
                                     case 1:
@@ -572,26 +559,29 @@ public class Main {
                                         System.out.println(createTableEmployer("Empty","Style2"));
                                         break;
                                     case 2:
-                                       // createNabarSociete(preferences.get("NOM", "Nom De Societe"));
+                                      //  createNabarSociete(preferences.get("NOM", "Nom De Societe"));
                                         System.out.println("Entrez email d'employe: ");
                                         email = scanner.nextLine();
                                         System.out.println("Entrez le nom d'employe");
                                         nom = scanner.nextLine();
                                         System.out.println("Entrez le prenom d'employe");
                                         prenom = scanner.nextLine();
-                                        //System.out.println("Entrez salere d'employe");
-                                        //salere = scanner.nextFloat();
-                                        System.out.println("Entrez la date de naissance: ");
-                                        //System.out.println("Entrez totale des Jours de Travail d'employe");
-                                        //totaleJourTravail = scanner.nextInt();
+                                        System.out.println("Entrez salere d'employe");
+                                        salere = scanner.nextFloat();
                                         scanner.nextLine();
+                                        System.out.println("Entrez totale des Jours de Travail d'employe");
+                                        totaleJourTravail = tryParse(scanner.nextLine());
+                                        //System.out.println("Entrez date naissance d'employe sous la forme de " + getRougeClairColor()+ "yyyy-mm-jj" +getDefautColor());
+                                        System.out.println("Entrez date naissance d'employe sous la forme de yyyy-mm-jj");
+                                        date_naissance = scanner.nextLine();
                                         patient = Patient.builder()
                                                 .email(email)
                                                 .nom(nom)
                                                 .prenom(prenom)
-                                                //.salere(salere)
+                                                .salere(salere)
+                                                .date_naissance(date_naissance)
                                                 .matreculeSociete(preferences.get("MATRECULE", "Matrecule De Societe"))
-                                                //4.totaleJourTravail(totaleJourTravail)
+                                                .totaleJourTravail(totaleJourTravail)
                                                 .build();
                                         boolean resultat = societeDao.ajouterEmploye(patient);
                                         if (resultat == true){
@@ -601,7 +591,7 @@ public class Main {
                                         }
                                         break;
                                     case 3:
-                                       // createNabarSociete(preferences.get("NOM", "Nom De Societe"));
+                                      //  createNabarSociete(preferences.get("NOM", "Nom De Societe"));
                                         System.out.println(createTableEmployer("Empty","Style1"));
                                         System.out.println(createTableEmployer("NoEmpty","Style1"));
                                         System.out.println(createTableEmployer("Empty","Style2"));
@@ -654,7 +644,7 @@ public class Main {
                                         }
                                         break;
                                     case 5:
-                                      //  createNabarSociete(preferences.get("NOM", "Nom De Societe"));
+                                       // createNabarSociete(preferences.get("NOM", "Nom De Societe"));
 
                                         System.out.println(createTableEmployer("Empty","Style1"));
                                         System.out.println(createTableEmployer("NoEmpty","Style1"));
@@ -666,13 +656,14 @@ public class Main {
 
                                         System.out.println("Entrez matrecule d'employe: ");
                                         matrecule = scanner.nextLine();
+                                        System.out.println("Entrez salere d'employe: ");
+                                        salere = scanner.nextFloat();
+                                        scanner.nextLine();
                                         System.out.println("Entrez le nombre des jour ou employe est absant");
-                                        nombreJourAbsance = scanner.nextInt();
-                                        scanner.nextLine();
+                                        nombreJourAbsance = tryParse(scanner.nextLine());
                                         System.out.println("Entrez le nombre des jour ou employe est malade");
-                                        nombreJourMaladie = scanner.nextInt();
-                                        scanner.nextLine();
-                                        boolean Resultat = societeDao.ajouterJourTravailleEmploye(nombreJourAbsance,nombreJourMaladie,matrecule);
+                                        nombreJourMaladie = tryParse(scanner.nextLine());
+                                        boolean Resultat = societeDao.ajouterJourTravailleEmploye(nombreJourAbsance,nombreJourMaladie,matrecule,salere);
                                         if (Resultat == true){
                                             System.out.println("les jours sont ajoutes");
                                         }else {
@@ -680,7 +671,7 @@ public class Main {
                                         }
                                         break;
                                     case 6:
-                                       // createNabarSociete(preferences.get("NOM", "Nom De Societe"));
+                                     //   createNabarSociete(preferences.get("NOM", "Nom De Societe"));
                                         System.out.println("Entrez matrecule d'employe: ");
                                         matrecule = scanner.nextLine();
                                         Resultat = patientDao.changeSociete(matrecule,preferences.get("MATRECULE", "Matrecule De Societe"));
@@ -691,7 +682,7 @@ public class Main {
                                         }
                                         break;
                                     case 0:
-                                     //   createNabarSociete(preferences.get("NOM", "Nom De Societe"));
+                                       // createNabarSociete(preferences.get("NOM", "Nom De Societe"));
                                         break;
                                     default:
                                        // createNabarSociete(preferences.get("NOM", "Nom De Societe"));
@@ -743,8 +734,8 @@ public class Main {
 
             if (choix != 0){
                 System.out.print("Voulez-vous continuer? (1 = Oui, 0 = Non): ");
-                choix = scanner.nextInt();
-               // clearConsole(30);
+                choix = tryParse(scanner.nextLine());
+              //  clearConsole(30);
             }
         } while (choix != 0);
         FermetureProgramme();

@@ -86,7 +86,7 @@ public class Dossier {
 
     @Override
     public String toString() {
-        String tr = getJauneColor() + "|";
+        String tr = /*getJauneColor() +*/ "|";
 
         tr += createTrTdDossier(String.valueOf(id));
         tr += createTrTdDossier(String.valueOf(prix_retour));

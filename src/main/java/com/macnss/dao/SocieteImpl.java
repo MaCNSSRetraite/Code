@@ -6,13 +6,15 @@ import com.macnss.Model.Agent;
 import com.macnss.Model.Patient;
 import com.macnss.Model.Societe;
 import org.mindrot.jbcrypt.BCrypt;
-import java.sql.Date;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -122,19 +124,35 @@ public class SocieteImpl implements SocieteDao{
                 Float PrixRetraite = null;
                 float Salere = patient.getSalere();
                 int totaleJourTravail = patient.getTotaleJourTravail();
-                String date_de_naissance = patient.getDateDeNaissance();
+                String date_naissance = patient.getDate_naissance();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                int annee = 0;
 
+                try {
+                    Date date = sdf.parse(date_naissance);
 
-
-                if (totaleJourTravail >= 3240) {
-                    StatusRetraite = "Retraite";
-                } else {
-                    StatusRetraite = "Non Retraite";
+                    java.util.Calendar calendar = java.util.Calendar.getInstance();
+                    calendar.setTime(date);
+                    annee = calendar.get(java.util.Calendar.YEAR);
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
 
-                if (totaleJourTravail >= 3240) {
+                Calendar calendrier = Calendar.getInstance();
+
+                int anneeAujourdhui = calendrier.get(Calendar.YEAR);
+                int moisAujourdhui = calendrier.get(Calendar.MONTH) + 1;
+                int jourAujourdhui = calendrier.get(Calendar.DAY_OF_MONTH);
+
+                String dateAjourdhui = anneeAujourdhui + "-" + moisAujourdhui + "-" + jourAujourdhui;
+
+                int an =  anneeAujourdhui - annee;
+
+                if (totaleJourTravail >= 3240 && an >= 55) {
+                    StatusRetraite = "Retraite";
                     PrixRetraite = (float) calculePrixRetraite(Salere,totaleJourTravail);
                 } else {
+                    StatusRetraite = "Non Retraite";
                     PrixRetraite = 0F;
                 }
 
@@ -146,19 +164,38 @@ public class SocieteImpl implements SocieteDao{
                     if (resultSet3.next()) {
                         int code = generateCode();
                         Matrecule += code;
-                        String query2 = "INSERT INTO patient (matrecule, nom_P, prenom_P, email, salere, statusRetraite, prixRetraite, matriculeSociete, totaleJourTravail,date_de_naissance) VALUES (?,?,?,?,?,?,?,?,?,?)";
+                        String query2 = "INSERT INTO patient (matrecule, nom_P, prenom_P, email, statusRetraite, prixRetraite, matriculeSociete, totaleJourTravail, date_naissance) VALUES (?,?,?,?,?,?,?,?,?)";
                         try (PreparedStatement preparedStatement2 = con.prepareStatement(query2);){
                             preparedStatement2.setString(1,Matrecule);
                             preparedStatement2.setString(2,patient.getNom());
                             preparedStatement2.setString(3,patient.getPrenom());
                             preparedStatement2.setString(4,patient.getemail());
-                            preparedStatement2.setFloat(5,Salere);
                             preparedStatement2.setString(6,StatusRetraite);
                             preparedStatement2.setFloat(7,PrixRetraite);
                             preparedStatement2.setString(8,patient.getMatreculeSociete());
                             preparedStatement2.setInt(9,totaleJourTravail);
-                            preparedStatement2.setString(10,date_de_naissance);
+                            preparedStatement2.setString(10,patient.getDate_naissance());
+
                             preparedStatement2.executeUpdate();
+
+                            String query4 = "INSERT INTO salaire (matrecule, date, salaire) VALUES (?,?,?)";
+                            try (PreparedStatement preparedStatement4 = con.prepareStatement(query4);){
+                                preparedStatement4.setString(1,Matrecule);
+                                preparedStatement4.setString(2,dateAjourdhui);
+                                preparedStatement4.setFloat(3,patient.getSalere());
+
+                                preparedStatement4.executeUpdate();
+
+                                return true;
+                            } catch (SQLException se){
+                                se.printStackTrace();
+                            }finally {
+                                try {
+                                    con.close();
+                                } catch (SQLException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }
 
                             return true;
                         } catch (SQLException se){
@@ -172,7 +209,7 @@ public class SocieteImpl implements SocieteDao{
                         }
                         return true;
                     }else {
-                        String query2 = "INSERT INTO patient (matrecule, nom_P, prenom_P, email, salere, statusRetraite, prixRetraite, matriculeSociete, totaleJourTravail) VALUES (?,?,?,?,?,?,?,?,?)";
+                        String query2 = "INSERT INTO patient (matrecule, nom_P, prenom_P, email, salere, statusRetraite, prixRetraite, matriculeSociete, totaleJourTravail, date_naissance) VALUES (?,?,?,?,?,?,?,?,?,?)";
                         try (PreparedStatement preparedStatement2 = con.prepareStatement(query2);){
                             preparedStatement2.setString(1,Matrecule);
                             preparedStatement2.setString(2,patient.getNom());
@@ -183,6 +220,7 @@ public class SocieteImpl implements SocieteDao{
                             preparedStatement2.setFloat(7,PrixRetraite);
                             preparedStatement2.setString(8,patient.getMatreculeSociete());
                             preparedStatement2.setInt(9,totaleJourTravail);
+                            preparedStatement2.setString(10,patient.getDate_naissance());
 
                             preparedStatement2.executeUpdate();
 
@@ -196,6 +234,26 @@ public class SocieteImpl implements SocieteDao{
                                 throw new RuntimeException(e);
                             }
                         }
+
+                        String query4 = "INSERT INTO salaire (matrecule, date, salaire) VALUES (?,?,?)";
+                        try (PreparedStatement preparedStatement4 = con.prepareStatement(query4);){
+                            preparedStatement4.setString(1,Matrecule);
+                            preparedStatement4.setString(2,dateAjourdhui);
+                            preparedStatement4.setFloat(3,patient.getSalere());
+
+                            preparedStatement4.executeUpdate();
+
+                            return true;
+                        } catch (SQLException se){
+                            se.printStackTrace();
+                        }finally {
+                            try {
+                                con.close();
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+
                         return true;
                     }
                 } catch (SQLException se){
@@ -329,7 +387,8 @@ public class SocieteImpl implements SocieteDao{
                         resultSet.getString("statusRetraite"),
                         resultSet.getFloat("prixRetraite"),
                         resultSet.getInt("totaleJourTravail"),
-                        resultSet.getString("matriculeSociete"));
+                        resultSet.getString("matriculeSociete"),
+                        resultSet.getString("date_naissance"));
                 patients.add(patient);
             }
 
@@ -408,7 +467,7 @@ public class SocieteImpl implements SocieteDao{
     }
 
     @Override
-    public boolean ajouterJourTravailleEmploye(int nombreJourAbsance, int nombreJourMaladie, String matrecule) {
+    public boolean ajouterJourTravailleEmploye(int nombreJourAbsance, int nombreJourMaladie, String matrecule, float salaire) {
         Connection con = DBconnection.getConnection();
 
         String query = "SELECT * FROM patient WHERE `matrecule` = ?";
@@ -422,12 +481,38 @@ public class SocieteImpl implements SocieteDao{
                 int jourTravail = 26 - (nombreJourAbsance+nombreJourMaladie);
                 totaleJourTravail = totaleJourTravail+jourTravail;
 
+                Calendar calendrier = Calendar.getInstance();
+
+                int anneeAujourdhui = calendrier.get(Calendar.YEAR);
+                int moisAujourdhui = calendrier.get(Calendar.MONTH) + 1;
+                int jourAujourdhui = calendrier.get(Calendar.DAY_OF_MONTH);
+
+                String dateAjourdhui = anneeAujourdhui + "-" + moisAujourdhui + "-" + jourAujourdhui;
+
                 String query2 = "UPDATE `patient` SET `totaleJourTravail`=? WHERE `matrecule`=?";
                 try (PreparedStatement preparedStatement2 = con.prepareStatement(query2);){
                     preparedStatement2.setInt(1,totaleJourTravail);
                     preparedStatement2.setString(2,matrecule);
 
                     preparedStatement2.executeUpdate();
+
+                    String query4 = "INSERT INTO `salaire`(`matrecule`, `salaire`, `date`) VALUES (?,?,?)";
+                    try (PreparedStatement preparedStatement4 = con.prepareStatement(query4);){
+                        preparedStatement4.setString(1,matrecule);
+                        preparedStatement4.setFloat(2,salaire);
+                        preparedStatement4.setDate(3, java.sql.Date.valueOf(dateAjourdhui));
+
+                        preparedStatement4.executeUpdate();
+                        return true;
+                    } catch (SQLException se){
+                        se.printStackTrace();
+                    }finally {
+                        try {
+                            con.close();
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
 
                     return true;
                 } catch (SQLException se){

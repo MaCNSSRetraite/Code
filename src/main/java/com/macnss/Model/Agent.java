@@ -67,7 +67,7 @@ public class Agent {
 
     @Override
     public String toString() {
-        String tr = getJauneColor() + "|";
+        String tr = /*getJauneColor() +*/ "|";
 
         tr += createTrTdAgents(String.valueOf(id));
         tr += createTrTdAgents(nom);

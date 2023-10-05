@@ -12,5 +12,5 @@ public interface SocieteDao {
     boolean supprimerEmploye(String matrecule);
     List<Patient> affichageEmploye(String matreculeEntreprise);
     Societe loginSociete(Societe societe);
-    boolean ajouterJourTravailleEmploye(int nombreJourAbsance, int nombreJourMaladie, String matrecule);
+    boolean ajouterJourTravailleEmploye(int nombreJourAbsance, int nombreJourMaladie, String matrecule, float salaire);
 }

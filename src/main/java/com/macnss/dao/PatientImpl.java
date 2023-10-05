@@ -8,10 +8,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 import static com.macnss.helpers.helpers.calculePrixRetraite;
+import static com.macnss.helpers.helpers.calculerNombreMois;
 
 public class PatientImpl implements PatientDao{
     @Override
@@ -99,8 +104,7 @@ public class PatientImpl implements PatientDao{
                             resultSet.getFloat("prixRetraite"),
                             resultSet.getInt("totaleJourTravail"),
                             resultSet.getString("matriculeSociete"),
-                            resultSet.getString("date_de_naissance")
-                    );
+                            resultSet.getString("date_naissance"));
                     return patient;
             }else {
                 patient = Patient.builder()
@@ -156,7 +160,12 @@ public class PatientImpl implements PatientDao{
         Connection con = DBconnection.getConnection();
 
         String statusRetraite = null;
-        String  prixRetraite = null;
+        float  prixRetraite = 0;
+        boolean resultat = false;
+        String returnStatus= null;
+        int totaleJourTravail;
+        int moisDansTotaleJourTravail = 0;
+        float prixRetraiteGlobal = 0;
 
         String query = "SELECT * FROM patient WHERE `matrecule` = ?";
         try (PreparedStatement preparedStatement = con.prepareStatement((query))){
@@ -165,8 +174,12 @@ public class PatientImpl implements PatientDao{
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
+                totaleJourTravail = resultSet.getInt("totaleJourTravail");
+                moisDansTotaleJourTravail = calculerNombreMois(totaleJourTravail);
                 statusRetraite = resultSet.getString("statusRetraite");
-                prixRetraite = resultSet.getString("prixRetraite");
+                prixRetraite = resultSet.getFloat("prixRetraite");
+                resultat = prendreRetraite(matrecule);
+                prixRetraiteGlobal = prixRetraite * moisDansTotaleJourTravail;
             }
 
         } catch (SQLException se){
@@ -178,8 +191,17 @@ public class PatientImpl implements PatientDao{
                 se.printStackTrace();
             }
         }
-        statusRetraite += " et vous avez " + prixRetraite + "DH dans votre Retraite";
-        return "Vous etes "+statusRetraite;
+        assert statusRetraite != null;
+        if (statusRetraite.equals("Retraite")) {
+            if (resultat == true){
+                returnStatus = "vous pouvez prendre votre retraite et vous avez " + prixRetraite + "DH dans chaque mois et vous avez " + prixRetraiteGlobal + "DH  dans votre Retraite";
+            } else {
+                returnStatus = "vous pouvez etre retraite mais ton age est inferieur a 55ans";
+            }
+        }else {
+            returnStatus="Vous etes "+statusRetraite;
+        }
+        return returnStatus;
     }
 
     @Override
@@ -197,7 +219,29 @@ public class PatientImpl implements PatientDao{
                 String matrecule = resultSet.getString("matrecule");
                 int totaleJourTravail = resultSet.getInt("totaleJourTravail");
                 int salere = resultSet.getInt("salere");
-                if (totaleJourTravail >= 3240) {
+                String date_naissance = resultSet.getString("date_naissance");
+
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                int annee = 0;
+
+                try {
+                    Date date = sdf.parse(date_naissance);
+
+                    java.util.Calendar calendar = java.util.Calendar.getInstance();
+                    calendar.setTime(date);
+                    annee = calendar.get(java.util.Calendar.YEAR);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+
+                Calendar calendrier = Calendar.getInstance();
+
+                int anneeAujourdhui = calendrier.get(Calendar.YEAR);
+
+                int an = anneeAujourdhui - annee;
+
+                if (totaleJourTravail >= 1320 && an >= 55) {
                     StatusRetraite = "Retraite";
                     PrixRetraite = (float) calculePrixRetraite(salere,totaleJourTravail);
                 } else {
@@ -226,5 +270,54 @@ public class PatientImpl implements PatientDao{
                 se.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public boolean prendreRetraite(String matrecule) {
+        Connection con = DBconnection.getConnection();
+
+
+        String query = "SELECT * FROM `patient` WHERE `matrecule`=?";
+        try (PreparedStatement preparedStatement = con.prepareStatement(query);){
+            preparedStatement.setString(1,matrecule);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String date_naissance = String.valueOf(resultSet.getDate("date_naissance"));
+                Date date_aujourdHui = new Date();
+
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(date_aujourdHui);
+
+                int anneeAujourdHui = calendar.get(Calendar.YEAR);
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = dateFormat.parse(date_naissance);
+                java.util.Calendar calendar2 = java.util.Calendar.getInstance();
+                calendar2.setTime(date);
+
+                int anneeNaissance = calendar2.get(java.util.Calendar.YEAR);
+
+                int deffirence_anneeNaissance_anneeAujourdHui = anneeAujourdHui - anneeNaissance;
+
+                if (deffirence_anneeNaissance_anneeAujourdHui >= 55){
+                    return true;
+                }else {
+                    return false;
+                }
+
+            }
+        } catch (SQLException se){
+            se.printStackTrace();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return false;
     }
 }
