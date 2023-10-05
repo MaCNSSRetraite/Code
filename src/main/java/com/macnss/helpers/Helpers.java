@@ -52,7 +52,7 @@ public class helpers {
     //static String jauneColor = "\u001B[93m";
     //static String purpleColor = "\u001B[35m";
     //static String defautColor = "\u001B[0m";
-    static String vertClairColor = "\u001B[92m";
+    //static String vertClairColor = "\u001B[92m";
     static String rougeClairColor = "\u001B[91m";
     static int td_lenght;
     static int td_lenght_empty;
@@ -441,11 +441,14 @@ public class helpers {
         int td_lenght_empty = 37 - td_lenght;
         int demi_td_lenght_empty = td_lenght_empty / 2;
         int modulo_td_lenght_2 = td_lenght_empty % 2;
-        String tr = vertClairColor;
+        //String tr = vertClairColor;
+        String tr;
         for (int i=0; i<demi_td_lenght_empty; i++){
-            tr += " ";
+            //tr += " ";
+            tr = " ";
         }
-        tr += td;
+       // tr += td;
+        tr = td;
         if (modulo_td_lenght_2 == 1){
             for (int i=0; i<demi_td_lenght_empty+1; i++){
                 tr += " ";
@@ -464,11 +467,14 @@ public class helpers {
         int td_lenght_empty = 20 - td_lenght;
         int demi_td_lenght_empty = td_lenght_empty / 2;
         int modulo_td_lenght_2 = td_lenght_empty % 2;
-        String tr = vertClairColor;
+        //String tr = vertClairColor;
+        String tr;
         for (int i=0; i<demi_td_lenght_empty; i++){
-            tr += " ";
+            //tr += " ";
+            tr = " ";
         }
-        tr += td;
+        //tr += td;
+        tr = td;
         if (modulo_td_lenght_2 == 1){
             for (int i=0; i<demi_td_lenght_empty+1; i++){
                 tr += " ";
@@ -487,11 +493,14 @@ public class helpers {
         int td_lenght_empty = 48 - td_lenght;
         int demi_td_lenght_empty = td_lenght_empty / 2;
         int modulo_td_lenght_2 = td_lenght_empty % 2;
-        String tr = vertClairColor;
+        //String tr = vertClairColor;
+        String tr;
         for (int i=0; i<demi_td_lenght_empty; i++){
-            tr += " ";
+            //tr += " ";
+            tr = " ";
         }
-        tr += td;
+        //tr += td;
+        tr = td;
         if (modulo_td_lenght_2 == 1){
             for (int i=0; i<demi_td_lenght_empty+1; i++){
                 tr += " ";
@@ -740,9 +749,10 @@ public class helpers {
             int demi_emptyNoEmpty_lenght_empty = emptyNoEmpty_lenght_empty / 2;
             int modulo_emptyNoEmpty_lenght_2 = emptyNoEmpty_lenght % 2;
 
-            tr = vertClairColor;
+            //tr = vertClairColor;
             for (int i=0; i<demi_emptyNoEmpty_lenght_empty; i++){
-                tr += " ";
+                //tr += " ";
+                tr = " ";
             }
             tr += emptyNoEmpty;
             if (modulo_emptyNoEmpty_lenght_2 == 1){
