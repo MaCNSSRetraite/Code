@@ -401,7 +401,8 @@ public class helpers {
             for (int i=0; i<demi_td2_lenght_empty+1; i++){
                 tr += " ";
             }
-            tr += jauneColor + "|" +purpleColor;
+            //tr += jauneColor + "|" +purpleColor;
+            tr += "|";
             for (int i=0; i<demi_td3_lenght_empty; i++){
                 tr += " ";
             }
@@ -409,7 +410,8 @@ public class helpers {
             for (int i=0; i<demi_td3_lenght_empty; i++){
                 tr += " ";
             }
-            tr += jauneColor + "|" + defautColor;
+            //tr += jauneColor + "|" + defautColor;
+            tr +="|";
         }else {
             td_lenght = sans.length();
             td_lenght_empty = (146 - td_lenght)/2;
@@ -427,7 +429,8 @@ public class helpers {
                     tr += " ";
                 }
             }
-            tr += jauneColor + "|";
+           // tr += jauneColor + "|";
+            tr += "|";
             tr += defautColor;
         }
         return tr;
@@ -451,7 +454,8 @@ public class helpers {
                 tr += " ";
             }
         }
-        tr += jauneColor + "|" + defautColor;
+       // tr += jauneColor + "|" + defautColor;
+        tr += "|" ;
         return tr;
     }
     public static String createTrTdDossier(String td){
@@ -473,7 +477,8 @@ public class helpers {
                 tr += " ";
             }
         }
-        tr += jauneColor + "|" + defautColor;
+        //tr += jauneColor + "|" + defautColor;
+        tr += "|" ;
         return tr;
     }
     public static String createTrTdTrMedicamentConsultationMedicale(String td){
@@ -495,7 +500,8 @@ public class helpers {
                 tr += " ";
             }
         }
-        tr += jauneColor + "|" + defautColor;
+      //  tr += jauneColor + "|" + defautColor;
+        tr += "|";
         return tr;
     }
     /*public static void clearConsole(int taille) {
@@ -508,9 +514,9 @@ public class helpers {
         System.out.println("Programme Fermé");
 
     }
-    public static String getJauneColor() {
+    /*public static String getJauneColor() {
         return jauneColor;
-    }
+    }*/
     /*public static String getDefautColor() {
         return defautColor;
     }*/
@@ -597,7 +603,8 @@ public class helpers {
 
 
     public static String createTableEmployer(String emptyNoEmpty, String style){
-        String tr = jauneColor;
+        //String tr = jauneColor;
+        String tr;
 
         String td1 = "Matrecule";
         String td2 = "Nom";
@@ -637,14 +644,16 @@ public class helpers {
         int demi_td_lenght_empty = td_lenght_empty / 2;
 
         if (emptyNoEmpty == "Empty" && style == "Style1"){
-            tr += "+";
+           // tr += "+";
+            tr = "+";
             for (int i = 0; i < 173; i++) {
                 tr += "-";
             }
             //tr += "+" + defautColor;
             tr += "+" ;
         } else if (emptyNoEmpty == "Empty" && style == "Style2") {
-            tr += "+";
+            //tr += "+";
+            tr = "+";
             for (int i = 0; i < 6; i++) {
                 for (int j = 0; j < 28; j++) {
                     tr += "-";
@@ -654,7 +663,8 @@ public class helpers {
             //tr += defautColor;
 
         } else if (emptyNoEmpty == "NoEmpty" && style == "Style1"){
-            tr += "|";
+            //tr += "|";
+            tr = "|";
             for (int i = 0; i < demi_td_lenght_empty; i++) {
                 tr += " ";
             }
@@ -666,7 +676,8 @@ public class helpers {
             //tr += "|" + defautColor;
             tr += "|" ;
         } else if (emptyNoEmpty == "NoEmpty" && style == "Style2") {
-            tr += "|";
+           // tr += "|";
+            tr = "|";
             for (int j = 0; j < demi_td1_lenght_empty; j++) {
                 tr += " ";
             }
@@ -679,7 +690,8 @@ public class helpers {
             for (int j = 0; j < demi_td2_lenght_empty; j++) {
                 tr += " ";
             }
-            tr += purpleColor + td2 + jauneColor;
+           // tr += purpleColor + td2 + jauneColor;
+            tr += td2 ;
             for (int j = 0; j < demi_td2_lenght_empty + 1; j++) {
                 tr += " ";
             }
@@ -687,7 +699,8 @@ public class helpers {
             for (int j = 0; j < demi_td3_lenght_empty; j++) {
                 tr += " ";
             }
-            tr += purpleColor + td3 + jauneColor;
+            //tr += purpleColor + td3 + jauneColor;
+            tr +=td3 ;
             for (int j = 0; j < demi_td3_lenght_empty; j++) {
                 tr += " ";
             }
@@ -695,7 +708,8 @@ public class helpers {
             for (int j = 0; j < demi_td4_lenght_empty; j++) {
                 tr += " ";
             }
-            tr += purpleColor + td4 + jauneColor;
+            //tr += purpleColor + td4 + jauneColor;
+            tr +=   td4 ;
             for (int j = 0; j < demi_td4_lenght_empty; j++) {
                 tr += " ";
             }
@@ -703,7 +717,8 @@ public class helpers {
             for (int j = 0; j < demi_td5_lenght_empty; j++) {
                 tr += " ";
             }
-            tr += purpleColor + td5 + jauneColor;
+            //tr += purpleColor + td5 + jauneColor;
+            tr +=   td5 ;
             for (int j = 0; j < demi_td5_lenght_empty + 1; j++) {
                 tr += " ";
             }
@@ -711,7 +726,8 @@ public class helpers {
             for (int j = 0; j < demi_td6_lenght_empty; j++) {
                 tr += " ";
             }
-            tr += purpleColor + td6 + jauneColor;
+           // tr += purpleColor + td6 + jauneColor;
+            tr +=  td6 ;
             for (int j = 0; j < demi_td6_lenght_empty; j++) {
                 tr += " ";
             }
@@ -736,7 +752,8 @@ public class helpers {
                     tr += " ";
                 }
             }
-            tr += jauneColor + "|" + defautColor;
+           // tr += jauneColor + "|" + defautColor;
+            tr +=  "|";
         }
         return tr;
     }
