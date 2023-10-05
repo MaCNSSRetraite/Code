@@ -500,23 +500,7 @@ public class helpers {
     public static void FermetureProgramme(){
 
         System.out.println("Programme Fermé");
-        /*
-        System.out.print(getVertClairColor() +"Fermeture du programme" + getDefautColor());
-        try {
-            String points = "";
-            for (int i = 0; i < 3; i++) {
-                points += " .";
-                System.out.flush();
-                Thread.sleep(250);
-                System.out.print("\r");
-                System.out.print(getVertClairColor() +"Fermeture du programme" + points + getDefautColor());
-                Thread.sleep(250);
-            }
-            clearConsole(30);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        */
+
     }
     /*public static String getJauneColor() {
         return jauneColor;
@@ -573,30 +557,7 @@ public class helpers {
             return prixRetraiteParMois;
         }
     }//lamda2
-    /*public static void createNabarSociete(String nomSociete){
-        nomSociete=nomSociete.toUpperCase();
-        String nomSocieteUpperCasePlusSpace = "";
-        String space="";
-        for (int i = 0; i < nomSociete.length(); i++) {
-            nomSocieteUpperCasePlusSpace += nomSociete.charAt(i) + " ";
-        }
-        int spaceFull = 141-nomSocieteUpperCasePlusSpace.length();
-        for (int i = 0; i < spaceFull; i++) {
-            space+=" ";
-        }
-        String logo = purpleColor + "+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n"+defautColor;
-              logo += purpleColor + "|"+jauneColor+"\t+----------------------+"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
-              logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"         +  +         "+jauneColor+"|"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
-              logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"         +  +         "+jauneColor+"|"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
-              logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"   + + + +  + + + +   "+jauneColor+"|"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
-              logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"   + + + +  + + + +   "+jauneColor+"|"+rougeClairColor+ space + nomSocieteUpperCasePlusSpace + defautColor + "      " +purpleColor + "|\n"+defautColor;
-              logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"         +  +         "+jauneColor+"|"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
-              logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"         +  +         "+jauneColor+"|"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
-              logo += purpleColor + "|"+jauneColor+"\t|"+vertClairColor+"     M A  C N S S     "+jauneColor+"|"+defautColor+"                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
-              logo += purpleColor + "|"+jauneColor+"\t+----------------------+                                                                                                                                                   " +purpleColor + "|\n"+defautColor;
-              logo += purpleColor + "+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n"+defautColor;
-        System.out.println(logo);
-    }*/
+
 
     public static String createTableEmployer(String emptyNoEmpty, String style){
         String tr = jauneColor;
