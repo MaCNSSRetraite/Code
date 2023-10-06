@@ -50,55 +50,10 @@ public class helpers {
             return false;
         }
     }
-    //static String jauneColor = "\u001B[93m";
-    //static String purpleColor = "\u001B[35m";
-    //static String defautColor = "\u001B[0m";
-    //static String vertClairColor = "\u001B[92m";
-    //static String rougeClairColor = "\u001B[91m";
+
     static int td_lenght;
     static int td_lenght_empty;
-  /*  public static String createTable(String td,String color){
-        String tr = jauneColor + "|";
-        if (td == ""){
-            tr = jauneColor + "+";
-            for (int i=0; i<90; i++){
-                tr += "-";
-            }
-            tr += "+";
-            tr += defautColor;
-        } else if (td == "style2") {
-            tr = jauneColor + "+";
-            for (int i=0; i<59; i++){
-                tr += "-";
-            }
-            tr += "+";
-            for (int i=0; i<30; i++){
-                tr += "-";
-            }
-            tr += "+";
-            tr += defautColor;
-        } else {
-            td_lenght = td.length();
-            td_lenght_empty = (90 - td_lenght)/2;
-            tr += color;
-            for (int i=0; i<td_lenght_empty; i++){
-                tr += " ";
-            }
-            tr += td;
-            if (((90 - td_lenght) % 2) == 1){
-                for (int i=0; i<td_lenght_empty+1; i++){
-                    tr += " ";
-                }
-            }else {
-                for (int i=0; i<td_lenght_empty; i++){
-                    tr += " ";
-                }
-            }
-            tr += jauneColor + "|";
-            tr += defautColor;
-        }
-        return tr;
-    }*/
+
     public static String createTableAgents(String td){
        // String tr = jauneColor + "+";
         String tr =  "+";
@@ -126,14 +81,14 @@ public class helpers {
                 tr += "-";
             }
             tr += "+";
-           // tr += defautColor;
+
         }
         else {
-           // tr = jauneColor + "|";
+
             tr = "|";
             td_lenght = td.length();
             td_lenght_empty = (151 - td_lenght)/2;
-           // tr += rougeClairColor;
+
             for (int i=0; i<td_lenght_empty; i++){
                 tr += " ";
             }
@@ -147,9 +102,9 @@ public class helpers {
                     tr += " ";
                 }
             }
-            //tr += jauneColor;
+
             tr += "|";
-           // tr += defautColor;
+
         }
         return tr;
     }
@@ -174,7 +129,7 @@ public class helpers {
         int td4_lenght_empty = 37 - td4_lenght;
         int demi_td4_lenght_empty = td4_lenght_empty / 2;
 
-       // String tr = jauneColor + "|" +purpleColor;
+
         String tr = "|" ;
         for (int i=0; i<demi_td1_lenght_empty+1; i++){
             tr += " ";
@@ -183,7 +138,7 @@ public class helpers {
         for (int i=0; i<demi_td1_lenght_empty; i++){
             tr += " ";
         }
-        //tr += jauneColor + "|" +purpleColor;
+
         tr += "|";
         for (int i=0; i<demi_td2_lenght_empty; i++){
             tr += " ";
@@ -192,7 +147,7 @@ public class helpers {
         for (int i=0; i<demi_td2_lenght_empty+1; i++){
             tr += " ";
         }
-        //tr += jauneColor + "|" +purpleColor;
+
         tr += "|";
         for (int i=0; i<demi_td3_lenght_empty; i++){
             tr += " ";
@@ -201,7 +156,7 @@ public class helpers {
         for (int i=0; i<demi_td3_lenght_empty; i++){
             tr += " ";
         }
-       // tr += jauneColor + "|" +purpleColor;
+
         tr +=  "|";
         for (int i=0; i<demi_td4_lenght_empty; i++){
             tr += " ";
@@ -210,7 +165,7 @@ public class helpers {
         for (int i=0; i<demi_td4_lenght_empty; i++){
             tr += " ";
         }
-       // tr += jauneColor + "|" + defautColor;
+
         tr += "|";
         return tr;
     }
@@ -246,27 +201,27 @@ public class helpers {
         int td7_lenght_empty = 20 - td7_lenght;
         int demi_td7_lenght_empty = td7_lenght_empty / 2;
 
-       // String tr = jauneColor + "|" +purpleColor;
+
         String tr ="|";
         if (sans == "sans1"){
-           // tr = jauneColor + "+";
+
             tr = "+";
             for (int i=0; i<146; i++){
                 tr += "-";
             }
-          //  tr += jauneColor + "+" + defautColor;
+
             tr += "+";
         } if (sans == "sans2"){
-            //tr = jauneColor + "+";
+
             tr =  "+";
             for (int j = 0 ; j<7; j++){
                 for (int i=0; i<20; i++){
                     tr += "-";
                 }
-                //tr += jauneColor + "+" ;
+
                 tr += "+" ;
             }
-           // tr += defautColor;
+
         }if (sans == "sans3"){
             for (int i=0; i<demi_td1_lenght_empty; i++){
                 tr += " ";
@@ -275,7 +230,7 @@ public class helpers {
             for (int i=0; i<demi_td1_lenght_empty; i++){
                 tr += " ";
             }
-           // tr += jauneColor + "|" +purpleColor;
+
             tr += "|";
             for (int i=0; i<demi_td2_lenght_empty; i++){
                 tr += " ";
@@ -284,7 +239,6 @@ public class helpers {
             for (int i=0; i<demi_td2_lenght_empty+1; i++){
                 tr += " ";
             }
-           // tr += jauneColor + "|" +purpleColor;
             tr +=  "|";
             for (int i=0; i<demi_td3_lenght_empty; i++){
                 tr += " ";
@@ -293,7 +247,6 @@ public class helpers {
             for (int i=0; i<demi_td3_lenght_empty; i++){
                 tr += " ";
             }
-            //tr += jauneColor + "|" +purpleColor;
             tr += "|" ;
             for (int i=0; i<demi_td4_lenght_empty; i++){
                 tr += " ";
@@ -302,7 +255,6 @@ public class helpers {
             for (int i=0; i<demi_td4_lenght_empty; i++){
                 tr += " ";
             }
-           // tr += jauneColor + "|" +purpleColor;
             tr +=  "|";
             for (int i=0; i<demi_td5_lenght_empty; i++){
                 tr += " ";
@@ -311,7 +263,6 @@ public class helpers {
             for (int i=0; i<demi_td5_lenght_empty+1; i++){
                 tr += " ";
             }
-            //tr += jauneColor + "| " +purpleColor + td6 + jauneColor + " |" +purpleColor;
             tr += "| " + td6 +  " |";
             for (int i=0; i<demi_td7_lenght_empty; i++){
                 tr += " ";
@@ -320,7 +271,6 @@ public class helpers {
             for (int i=0; i<demi_td7_lenght_empty+1; i++){
                 tr += " ";
             }
-            //tr += jauneColor + "|" + defautColor;
             tr += "|";
         }else {
             td_lenght = sans.length();
@@ -339,9 +289,7 @@ public class helpers {
                     tr += " ";
                 }
             }
-            //tr += jauneColor + "|";
             tr +=  "|";
-            //tr += defautColor;
 
         }
         return tr;
@@ -364,18 +312,14 @@ public class helpers {
         int td3_lenght_empty = 48 - td3_lenght;
         int demi_td3_lenght_empty = td3_lenght_empty / 2;
 
-        //String tr = jauneColor + "|" +purpleColor;
         String tr = "|";
         if (sans == "sans1"){
-            //tr = jauneColor + "+";
             tr =  "+";
             for (int i=0; i<146; i++){
                 tr += "-";
             }
-            //tr += jauneColor + "+" + defautColor;
             tr += "+";
         } if (sans == "sans2"){
-           // tr = jauneColor + "+";
             tr =  "+";
             for (int j = 0 ; j<3; j++){
                 for (int i=0; i<48; i++){
@@ -384,7 +328,6 @@ public class helpers {
                 //tr += jauneColor + "+" ;
                 tr += "+" ;
             }
-            //tr += defautColor;
         }if (sans == "sans3"){
             for (int i=0; i<demi_td1_lenght_empty; i++){
                 tr += " ";
@@ -394,7 +337,6 @@ public class helpers {
                 tr += " ";
             }
 
-           // tr += jauneColor + "|" +purpleColor;
             tr += "|" ;
             for (int i=0; i<demi_td2_lenght_empty; i++){
                 tr += " ";
@@ -403,7 +345,6 @@ public class helpers {
             for (int i=0; i<demi_td2_lenght_empty+1; i++){
                 tr += " ";
             }
-            //tr += jauneColor + "|" +purpleColor;
             tr += "|";
             for (int i=0; i<demi_td3_lenght_empty; i++){
                 tr += " ";
@@ -412,12 +353,10 @@ public class helpers {
             for (int i=0; i<demi_td3_lenght_empty; i++){
                 tr += " ";
             }
-            //tr += jauneColor + "|" + defautColor;
             tr +="|";
         }else {
             td_lenght = sans.length();
             td_lenght_empty = (146 - td_lenght)/2;
-           // tr += getRougeClairColor();
             for (int i=0; i<td_lenght_empty; i++){
                 tr += " ";
             }
@@ -431,9 +370,7 @@ public class helpers {
                     tr += " ";
                 }
             }
-           // tr += jauneColor + "|";
             tr += "|";
-            //tr += defautColor;
         }
         return tr;
     }
@@ -442,13 +379,10 @@ public class helpers {
         int td_lenght_empty = 37 - td_lenght;
         int demi_td_lenght_empty = td_lenght_empty / 2;
         int modulo_td_lenght_2 = td_lenght_empty % 2;
-        //String tr = vertClairColor;
         String tr;
         for (int i=0; i<demi_td_lenght_empty; i++){
-            //tr += " ";
             tr = " ";
         }
-       // tr += td;
         tr = td;
         if (modulo_td_lenght_2 == 1){
             for (int i=0; i<demi_td_lenght_empty+1; i++){
@@ -459,7 +393,6 @@ public class helpers {
                 tr += " ";
             }
         }
-       // tr += jauneColor + "|" + defautColor;
         tr += "|" ;
         return tr;
     }
@@ -468,13 +401,10 @@ public class helpers {
         int td_lenght_empty = 20 - td_lenght;
         int demi_td_lenght_empty = td_lenght_empty / 2;
         int modulo_td_lenght_2 = td_lenght_empty % 2;
-        //String tr = vertClairColor;
         String tr;
         for (int i=0; i<demi_td_lenght_empty; i++){
-            //tr += " ";
             tr = " ";
         }
-        //tr += td;
         tr = td;
         if (modulo_td_lenght_2 == 1){
             for (int i=0; i<demi_td_lenght_empty+1; i++){
@@ -485,7 +415,6 @@ public class helpers {
                 tr += " ";
             }
         }
-        //tr += jauneColor + "|" + defautColor;
         tr += "|" ;
         return tr;
     }
@@ -494,13 +423,10 @@ public class helpers {
         int td_lenght_empty = 48 - td_lenght;
         int demi_td_lenght_empty = td_lenght_empty / 2;
         int modulo_td_lenght_2 = td_lenght_empty % 2;
-        //String tr = vertClairColor;
         String tr;
         for (int i=0; i<demi_td_lenght_empty; i++){
-            //tr += " ";
             tr = " ";
         }
-        //tr += td;
         tr = td;
         if (modulo_td_lenght_2 == 1){
             for (int i=0; i<demi_td_lenght_empty+1; i++){
@@ -511,33 +437,15 @@ public class helpers {
                 tr += " ";
             }
         }
-      //  tr += jauneColor + "|" + defautColor;
         tr += "|";
         return tr;
     }
-    /*public static void clearConsole(int taille) {
-        for (int i = 0; i < taille; i++) {
-            System.out.println();
-        }
-    }*/
+
     public static void FermetureProgramme(){
 
         System.out.println("Programme Fermé");
 
     }
-    /*public static String getJauneColor() {
-        return jauneColor;
-    }*/
-    /*public static String getDefautColor() {
-        return defautColor;
-    }*/
-    /*public static String getVertClairColor() {
-        return vertClairColor;
-    }*/
-    /*
-    public static String getRougeClairColor() {
-        return rougeClairColor;
-    }*/
     public static String generateMatrecule(String nom, String prenom, String email,int Taille){
         String Matrecule = null;
 
@@ -550,62 +458,7 @@ public class helpers {
         return Matrecule;
     };
 
-
-    /*public static int calculerNombreMois(int nombreDeJours) {
-        final double JOURS_PAR_MOIS = 26;
-        Function<Integer, Integer> calculMois = (jours) -> {
-            double nombreDeMoisDouble = jours / JOURS_PAR_MOIS;
-            return (int) Math.round(nombreDeMoisDouble);
-        };
-        return calculMois.apply(nombreDeJours);
-    }//lamda1*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*public static double calculePrixRetraite(float salaire, int totaleJourTravail) {
-        double pourcentageReduction;
-
-        if (totaleJourTravail <= 3240) {
-            pourcentageReduction = 50.0;
-        } else if (totaleJourTravail >= 7560) {
-            pourcentageReduction = 70.0;
-        } else {
-            int nombreDeFoisDe216 = (totaleJourTravail - 3240) / 216;
-            pourcentageReduction = 50.0 + nombreDeFoisDe216;
-        }
-
-        Supplier<Double> calculprixRetraiteParMois = () -> salaire * (pourcentageReduction / 100.0);
-        double prixRetraiteParMois = calculprixRetraiteParMois.get();
-
-        return contSalaireRetreite((float) prixRetraiteParMois);
-    }*/
-
-
-
-
-
-
-
-
-
-
     public static String createTableEmployer(String emptyNoEmpty, String style){
-        //String tr = jauneColor;
         String tr;
 
         String td1 = "Matrecule";
@@ -646,15 +499,12 @@ public class helpers {
         int demi_td_lenght_empty = td_lenght_empty / 2;
 
         if (emptyNoEmpty == "Empty" && style == "Style1"){
-           // tr += "+";
             tr = "+";
             for (int i = 0; i < 173; i++) {
                 tr += "-";
             }
-            //tr += "+" + defautColor;
             tr += "+" ;
         } else if (emptyNoEmpty == "Empty" && style == "Style2") {
-            //tr += "+";
             tr = "+";
             for (int i = 0; i < 6; i++) {
                 for (int j = 0; j < 28; j++) {
@@ -662,7 +512,6 @@ public class helpers {
                 }
                 tr += "+";
             }
-            //tr += defautColor;
 
         } else if (emptyNoEmpty == "NoEmpty" && style == "Style1"){
             //tr += "|";
@@ -670,12 +519,10 @@ public class helpers {
             for (int i = 0; i < demi_td_lenght_empty; i++) {
                 tr += " ";
             }
-            //tr += rougeClairColor + td + jauneColor;
             tr +=td;
             for (int i = 0; i < demi_td_lenght_empty; i++) {
                 tr += " ";
             }
-            //tr += "|" + defautColor;
             tr += "|" ;
         } else if (emptyNoEmpty == "NoEmpty" && style == "Style2") {
            // tr += "|";
@@ -683,7 +530,6 @@ public class helpers {
             for (int j = 0; j < demi_td1_lenght_empty; j++) {
                 tr += " ";
             }
-            //tr += purpleColor + td1 + jauneColor;
             tr += td1;
             for (int j = 0; j < demi_td1_lenght_empty + 1; j++) {
                 tr += " ";
@@ -692,7 +538,6 @@ public class helpers {
             for (int j = 0; j < demi_td2_lenght_empty; j++) {
                 tr += " ";
             }
-           // tr += purpleColor + td2 + jauneColor;
             tr += td2 ;
             for (int j = 0; j < demi_td2_lenght_empty + 1; j++) {
                 tr += " ";
@@ -701,7 +546,6 @@ public class helpers {
             for (int j = 0; j < demi_td3_lenght_empty; j++) {
                 tr += " ";
             }
-            //tr += purpleColor + td3 + jauneColor;
             tr +=td3 ;
             for (int j = 0; j < demi_td3_lenght_empty; j++) {
                 tr += " ";
@@ -710,7 +554,6 @@ public class helpers {
             for (int j = 0; j < demi_td4_lenght_empty; j++) {
                 tr += " ";
             }
-            //tr += purpleColor + td4 + jauneColor;
             tr +=   td4 ;
             for (int j = 0; j < demi_td4_lenght_empty; j++) {
                 tr += " ";
@@ -719,7 +562,6 @@ public class helpers {
             for (int j = 0; j < demi_td5_lenght_empty; j++) {
                 tr += " ";
             }
-            //tr += purpleColor + td5 + jauneColor;
             tr +=   td5 ;
             for (int j = 0; j < demi_td5_lenght_empty + 1; j++) {
                 tr += " ";
@@ -728,12 +570,10 @@ public class helpers {
             for (int j = 0; j < demi_td6_lenght_empty; j++) {
                 tr += " ";
             }
-           // tr += purpleColor + td6 + jauneColor;
             tr +=  td6 ;
             for (int j = 0; j < demi_td6_lenght_empty; j++) {
                 tr += " ";
             }
-            //tr += "|" + defautColor;
             tr += "|" ;
         } else {
             int emptyNoEmpty_lenght = emptyNoEmpty.length();
@@ -741,12 +581,10 @@ public class helpers {
             int demi_emptyNoEmpty_lenght_empty = emptyNoEmpty_lenght_empty / 2;
             int modulo_emptyNoEmpty_lenght_2 = emptyNoEmpty_lenght % 2;
 
-            //tr = vertClairColor;
             for (int i=0; i<demi_emptyNoEmpty_lenght_empty; i++){
                 //tr += " ";
                 tr = " ";
             }
-            //tr += emptyNoEmpty;
             tr = emptyNoEmpty;
             if (modulo_emptyNoEmpty_lenght_2 == 1){
                 for (int i=0; i<demi_emptyNoEmpty_lenght_empty+1; i++){
@@ -757,7 +595,6 @@ public class helpers {
                     tr += " ";
                 }
             }
-           // tr += jauneColor + "|" + defautColor;
             tr +=  "|";
         }
         return tr;
@@ -769,51 +606,6 @@ public class helpers {
             return 100;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*public static int calculerNombreMois(int nombreDeJours) {
-        final double JOURS_PAR_MOIS = 26;
-        return ((IntFunction<Integer>) jours -> (int) Math.round(jours / JOURS_PAR_MOIS)).apply(nombreDeJours);
-    }
-    public static float contSalaireRetreite(float salaire) {
-        return Math.min(6000, Math.max(1000, salaire));
-    }//lamda 3
-    public static double calculePrixRetraite(float salaire, int totaleJourTravail){
-        if (totaleJourTravail<=3240) {
-            Supplier<Double> calculprixRetraiteParMois = () ->
-                    salaire * (50 / 100.0);
-            double prixRetraiteParMois = calculprixRetraiteParMois.get();
-            prixRetraiteParMois = contSalaireRetreite((float) prixRetraiteParMois);
-            return prixRetraiteParMois;
-        } else if (totaleJourTravail>=7560) {
-            Supplier<Double> calculprixRetraiteParMois = () ->
-                    salaire * (70 / 100.0);
-            double prixRetraiteParMois = calculprixRetraiteParMois.get();
-            prixRetraiteParMois = contSalaireRetreite((float) prixRetraiteParMois);
-            return prixRetraiteParMois;
-        } else {
-            int nombreDeFoisDe216 = (totaleJourTravail-3240)/216;
-            Supplier<Double> calculprixRetraiteParMois = () ->
-                    salaire * ((50 + nombreDeFoisDe216) / 100.0);
-
-            double prixRetraiteParMois = calculprixRetraiteParMois.get();
-            prixRetraiteParMois = contSalaireRetreite((float) prixRetraiteParMois);
-            return prixRetraiteParMois;
-        }
-    }//lamda2*/
-
-
+    
 
 }
