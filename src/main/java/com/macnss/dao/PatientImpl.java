@@ -15,8 +15,11 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import static com.macnss.helpers.helpers.calculePrixRetraite;
-import static com.macnss.helpers.helpers.calculerNombreMois;
+//import static com.macnss.helpers.helpers.calculePrixRetraite;
+//import static com.macnss.helpers.helpers.calculerNombreMois;
+
+import static com.macnss.helpers.CalculRetraite.calculePrixRetraite;
+import static com.macnss.helpers.CalculRetraite.calculerNombreMois;
 
 public class PatientImpl implements PatientDao{
     @Override

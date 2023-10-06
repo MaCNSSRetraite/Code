@@ -19,6 +19,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static com.macnss.helpers.helpers.*;
+import static com.macnss.helpers.CalculRetraite.*;
 
 public class SocieteImpl implements SocieteDao{
     @Override
