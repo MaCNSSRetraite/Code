@@ -218,7 +218,7 @@ public class PatientImpl implements PatientDao{
                 String StatusRetraite;
                 String matrecule = resultSet.getString("matrecule");
                 int totaleJourTravail = resultSet.getInt("totaleJourTravail");
-                int salere = resultSet.getInt("salere");
+                int salere = resultSet.getInt("salaire");
                 String date_naissance = resultSet.getString("date_naissance");
 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

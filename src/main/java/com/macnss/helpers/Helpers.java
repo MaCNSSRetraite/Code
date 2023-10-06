@@ -9,6 +9,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 import java.util.function.Function;
+import java.util.function.IntFunction;
 import java.util.function.Supplier;
 
 public class helpers {
@@ -550,14 +551,32 @@ public class helpers {
     };
 
 
-    public static int calculerNombreMois(int nombreDeJours) {
+    /*public static int calculerNombreMois(int nombreDeJours) {
         final double JOURS_PAR_MOIS = 26;
         Function<Integer, Integer> calculMois = (jours) -> {
             double nombreDeMoisDouble = jours / JOURS_PAR_MOIS;
             return (int) Math.round(nombreDeMoisDouble);
         };
         return calculMois.apply(nombreDeJours);
-    }//lamda1
+    }//lamda1*/
+
+    public static int calculerNombreMois(int nombreDeJours) {
+        final double JOURS_PAR_MOIS = 26;
+        return ((4IntFunction<Integer>) jours -> (int) Math.round(jours / JOURS_PAR_MOIS)).apply(nombreDeJours);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
