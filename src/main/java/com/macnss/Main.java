@@ -68,7 +68,7 @@ public class Main {
 
             System.out.print("Enterez votre choix (0-4): ");
             choix = tryParse(scanner.nextLine());
-          //  clearConsole(28);
+
 
             switch (choix) {
                 case 1:
@@ -93,7 +93,7 @@ public class Main {
                         preferences.putInt("ID", admin.getId());
                         preferences.put("MATRECULE", "null");
 
-                       // clearConsole(30);
+
 
                        // System.out.println(createTable("", ""));
                         System.out.println("Menu");
@@ -107,7 +107,7 @@ public class Main {
 
                         System.out.print("Enterez votre choix (0-4): ");
                         choix = tryParse(scanner.nextLine());
-                       // clearConsole(30);
+
 
                         switch (choix){
                             case 1:
@@ -234,7 +234,6 @@ public class Main {
                         preferences.put("MATRECULE", "null");
 
 
-                      //  clearConsole(30);
 
                         //System.out.println(createTable("", ""));
                         System.out.println("Menu");
@@ -249,7 +248,7 @@ public class Main {
 
                         System.out.print("Enterez votre choix (0-5): ");
                         choix = tryParse(scanner.nextLine());
-                       // clearConsole(30);
+
 
                         switch (choix){
                             case 1:
@@ -312,7 +311,7 @@ public class Main {
                                 System.out.println(createTrDossiers("Modifier un Dossier"));
                                 System.out.println(createTrDossiers("sans1"));
 
-                              //  clearConsole(2);
+
 
                                 System.out.println("Entrer Matrecule de Patient");
                                 matrecule=scanner.nextLine();
@@ -373,7 +372,7 @@ public class Main {
                                 System.out.println(createTrDossiers("Supprimer un Dossier"));
                                 System.out.println(createTrDossiers("sans1"));
 
-                             //   clearConsole(2);
+
 
                                 System.out.println(createTrDossiers("sans1"));
                                 System.out.println(createTrDossiers("List des Dossiers"));
@@ -449,7 +448,7 @@ public class Main {
                             preferences.putInt("ID", -1);
                             preferences.put("MATRECULE", patient.getMatrecule());
 
-                          //  clearConsole(30);
+
 
                             //System.out.println(createTable("", ""));
                             System.out.println("Menu");
@@ -462,7 +461,7 @@ public class Main {
 
                             System.out.print("Enterez votre choix (0-3): ");
                             choix = tryParse(scanner.nextLine());
-                      //      clearConsole(30);
+
 
                             switch (choix){
                                 case 1:
@@ -509,7 +508,7 @@ public class Main {
 
                     System.out.print("Enterez votre choix (0-2): ");
                     choix = tryParse(scanner.nextLine());
-                 //   clearConsole(30);
+
                     switch (choix){
                         case 1:
                             System.out.println("Entrez votre email: ");
@@ -528,9 +527,9 @@ public class Main {
                                 preferences.putInt("ID", societe.getId());
                                 preferences.put("MATRECULE", societe.getMatrecule());
 
-                               // clearConsole(30);
+
                               //  createNabarSociete(preferences.get("NOM", "Nom De Societe"));
-                                //clearConsole(5);
+
 
                                // System.out.println(createTable("", ""));
                                 System.out.println("Menu");
@@ -546,7 +545,7 @@ public class Main {
 
                                 System.out.print("Enterez votre choix (0-6): ");
                                 choix = tryParse(scanner.nextLine());
-                               // clearConsole(30);
+
                                 switch (choix){
                                     case 1:
                                        // createNabarSociete(preferences.get("NOM", "Nom De Societe"));
@@ -735,7 +734,7 @@ public class Main {
             if (choix != 0){
                 System.out.print("Voulez-vous continuer? (1 = Oui, 0 = Non): ");
                 choix = tryParse(scanner.nextLine());
-              //  clearConsole(30);
+
             }
         } while (choix != 0);
         FermetureProgramme();
