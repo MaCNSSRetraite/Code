@@ -562,7 +562,7 @@ public class helpers {
 
     public static int calculerNombreMois(int nombreDeJours) {
         final double JOURS_PAR_MOIS = 26;
-        return ((4IntFunction<Integer>) jours -> (int) Math.round(jours / JOURS_PAR_MOIS)).apply(nombreDeJours);
+        return ((IntFunction<Integer>) jours -> (int) Math.round(jours / JOURS_PAR_MOIS)).apply(nombreDeJours);
     }
 
 
