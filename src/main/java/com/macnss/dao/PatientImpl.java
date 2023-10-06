@@ -15,9 +15,6 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-//import static com.macnss.helpers.helpers.calculePrixRetraite;
-//import static com.macnss.helpers.helpers.calculerNombreMois;
-
 import static com.macnss.helpers.CalculRetraite.calculePrixRetraite;
 import static com.macnss.helpers.CalculRetraite.calculerNombreMois;
 
@@ -98,17 +95,17 @@ public class PatientImpl implements PatientDao{
 
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                    patient = new Patient(resultSet.getString("matrecule"),
-                            resultSet.getString("nom_P"),
-                            resultSet.getString("prenom_P"),
-                            resultSet.getString("email"),
-                            resultSet.getFloat("salaire"),
-                            resultSet.getString("statusRetraite"),
-                            resultSet.getFloat("prixRetraite"),
-                            resultSet.getInt("totaleJourTravail"),
-                            resultSet.getString("matriculeSociete"),
-                            resultSet.getString("date_naissance"));
-                    return patient;
+                patient = new Patient(resultSet.getString("matrecule"),
+                        resultSet.getString("nom_P"),
+                        resultSet.getString("prenom_P"),
+                        resultSet.getString("email"),
+                        resultSet.getFloat("salere"),
+                        resultSet.getString("statusRetraite"),
+                        resultSet.getFloat("prixRetraite"),
+                        resultSet.getInt("totaleJourTravail"),
+                        resultSet.getString("matriculeSociete"),
+                        resultSet.getString("date_naissance"));
+                return patient;
             }else {
                 patient = Patient.builder()
                         .matrecule("null")
