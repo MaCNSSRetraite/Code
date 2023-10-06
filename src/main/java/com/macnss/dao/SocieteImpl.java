@@ -165,7 +165,7 @@ public class SocieteImpl implements SocieteDao{
                     if (resultSet3.next()) {
                         int code = generateCode();
                         Matrecule += code;
-                        String query2 = "INSERT INTO patient (matrecule, nom_P, prenom_P, email, statusRetraite, prixRetraite, matriculeSociete, totaleJourTravail, date_naissance,salere) VALUES (?,?,?,?,?,?,?,?,?,?)";
+                        String query2 = "INSERT INTO patient (matrecule, nom_P, prenom_P, email, statusRetraite, prixRetraite, matriculeSociete, totaleJourTravail, date_naissance,salaire) VALUES (?,?,?,?,?,?,?,?,?,?)";
                         try (PreparedStatement preparedStatement2 = con.prepareStatement(query2);){
                             preparedStatement2.setString(1,Matrecule);
                             preparedStatement2.setString(2,patient.getNom());

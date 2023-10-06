@@ -5,19 +5,25 @@ import java.util.function.Supplier;
 
 public class CalculRetraite {
 
-    public static int calculerNombreMois(int nombreDeJours) {
+    /*public static int calculerNombreMois(int nombreDeJours) {
         final double JOURS_PAR_MOIS = 26;
         Function<Integer, Integer> calculMois = (jours) -> {
             double nombreDeMoisDouble = jours / JOURS_PAR_MOIS;
             return (int) Math.round(nombreDeMoisDouble);
         };
         return calculMois.apply(nombreDeJours);
-    }//lamda1
+    }*/
+
+    public static int calculerNombreMois(int nombreDeJours) {
+        final double JOURS_PAR_MOIS = 26;
+        return (int) Math.round(nombreDeJours / JOURS_PAR_MOIS);
+    }
+
 
 
     public static float contSalaireRetreite(float salaire) {
         return Math.min(6000, Math.max(1000, salaire));
-    }//lamda 3
+    }
 
 
 
@@ -43,5 +49,5 @@ public class CalculRetraite {
             prixRetraiteParMois = contSalaireRetreite((float) prixRetraiteParMois);
             return prixRetraiteParMois;
         }
-    }//lamda2
+    }
 }

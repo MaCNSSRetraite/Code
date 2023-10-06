@@ -102,7 +102,7 @@ public class PatientImpl implements PatientDao{
                             resultSet.getString("nom_P"),
                             resultSet.getString("prenom_P"),
                             resultSet.getString("email"),
-                            resultSet.getFloat("salere"),
+                            resultSet.getFloat("salaire"),
                             resultSet.getString("statusRetraite"),
                             resultSet.getFloat("prixRetraite"),
                             resultSet.getInt("totaleJourTravail"),
