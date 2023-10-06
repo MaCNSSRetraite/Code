@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.prefs.Preferences;
 
 import static com.macnss.helpers.helpers.*;
+import static com.macnss.helpers.Mail.*;
 
 public class Main {
 
@@ -210,7 +211,7 @@ public class Main {
                     randomCode = helpers.generateCode();
                     body = "Code généré : " + randomCode;
                     subject = "Confirmer votre email";
-                    helpers.sendMail(body,subject,email);
+                    Mail.sendMail(body,subject,email);
 
                     System.out.println("Le code de confirmation de confirmation est envoyer a votre adresse mail");
                     System.out.println("Entrer votre code de confirmation");

@@ -4,6 +4,7 @@ import com.macnss.DBconnection.DBconnection;
 import com.macnss.Model.Agent;
 import com.macnss.Model.Dossier;
 import com.macnss.helpers.helpers;
+import com.macnss.helpers.Mail;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.Connection;
@@ -157,7 +158,7 @@ public class AgentImpl implements AgentDao{
                         if (status == -1){
                             String body = "Votre dossier est Refusé ";
                             String subject = "Confirmation de votre dossier";
-                            boolean resultat = helpers.sendMail(body,subject,email);
+                            boolean resultat = Mail.sendMail(body,subject,email);
                             if (resultat == true){
                                 System.out.println("Email de Confirmation a ete envoyer");
                                 return true;
@@ -169,7 +170,7 @@ public class AgentImpl implements AgentDao{
                         if (status == 1){
                             String body = "Votre dossier est Validé ";
                             String subject = "Confirmation de votre dossier";
-                            boolean resultat = helpers.sendMail(body,subject,email);
+                            boolean resultat = Mail.sendMail(body,subject,email);
                             if (resultat == true){
                                 System.out.println("Email de Confirmation a ete envoyer");
                                 return true;
