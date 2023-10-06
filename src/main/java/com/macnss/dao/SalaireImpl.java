@@ -11,7 +11,7 @@ import static com.macnss.helpers.helpers.*;
 
 public class SalaireImpl implements SalaireDao{
     @Override
-    public void calculeSalereMoyenne() {
+    public void calculeSalaireMoyenne() {
 
         Connection con = DBconnection.getConnection();
         String query = "SELECT * FROM patient";

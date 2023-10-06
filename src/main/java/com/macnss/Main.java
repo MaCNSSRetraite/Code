@@ -33,7 +33,7 @@ public class Main {
         String nom;
         String prenom;
         String matrecule;
-        float salere;
+        float salaire;
         int status;
         int totaleJourTravail;
         int CM;
@@ -48,7 +48,7 @@ public class Main {
         String date_naissance;
 
         do {
-            salaireDao.calculeSalereMoyenne();
+            salaireDao.calculeSalaireMoyenne();
             patientDao.checkRetraiteCalculerPrixRetraite();
             preferences.put("EMAIL", "null");
             preferences.put("NOM", "null");
@@ -565,8 +565,8 @@ public class Main {
                                         nom = scanner.nextLine();
                                         System.out.println("Entrez le prenom d'employe");
                                         prenom = scanner.nextLine();
-                                        System.out.println("Entrez salere d'employe");
-                                        salere = scanner.nextFloat();
+                                        System.out.println("Entrez salaire d'employe");
+                                        salaire = scanner.nextFloat();
                                         scanner.nextLine();
                                         System.out.println("Entrez totale des Jours de Travail d'employe");
                                         totaleJourTravail = tryParse(scanner.nextLine());
@@ -577,7 +577,7 @@ public class Main {
                                                 .email(email)
                                                 .nom(nom)
                                                 .prenom(prenom)
-                                                .salere(salere)
+                                                .salaire(salaire)
                                                 .date_naissance(date_naissance)
                                                 .matreculeSociete(preferences.get("MATRECULE", "Matrecule De Societe"))
                                                 .totaleJourTravail(totaleJourTravail)
@@ -605,13 +605,13 @@ public class Main {
                                         nom = scanner.nextLine();
                                         System.out.println("Entrez le prenom d'employe");
                                         prenom = scanner.nextLine();
-                                        System.out.println("Entrez salere d'employe");
-                                        salere = scanner.nextFloat();
+                                        System.out.println("Entrez salaire d'employe");
+                                        salaire = scanner.nextFloat();
 
                                         patient = Patient.builder()
                                                 .nom(nom)
                                                 .prenom(prenom)
-                                                .salere(salere)
+                                                .salaire(salaire)
                                                 .matrecule(matrecule)
                                                 .build();
                                         resultat = societeDao.modifierEmploye(patient);
@@ -655,14 +655,14 @@ public class Main {
 
                                         System.out.println("Entrez matrecule d'employe: ");
                                         matrecule = scanner.nextLine();
-                                        System.out.println("Entrez salere d'employe: ");
-                                        salere = scanner.nextFloat();
+                                        System.out.println("Entrez salaire d'employe: ");
+                                        salaire = scanner.nextFloat();
                                         scanner.nextLine();
                                         System.out.println("Entrez le nombre des jour ou employe est absant");
                                         nombreJourAbsance = tryParse(scanner.nextLine());
                                         System.out.println("Entrez le nombre des jour ou employe est malade");
                                         nombreJourMaladie = tryParse(scanner.nextLine());
-                                        boolean Resultat = societeDao.ajouterJourTravailleEmploye(nombreJourAbsance,nombreJourMaladie,matrecule,salere);
+                                        boolean Resultat = societeDao.ajouterJourTravailleEmploye(nombreJourAbsance,nombreJourMaladie,matrecule,salaire);
                                         if (Resultat == true){
                                             System.out.println("les jours sont ajoutes");
                                         }else {

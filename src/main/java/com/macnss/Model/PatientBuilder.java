@@ -7,7 +7,7 @@ public class PatientBuilder {
     private String nom;
     private String prenom;
     private String email;
-    private float salere;
+    private float salaire;
     private String statusRetraite;
     private float prixRetraite;
     private int totaleJourTravail;
@@ -33,8 +33,8 @@ public class PatientBuilder {
         this.email = email;
         return this;
     }
-    public PatientBuilder salere(float salere) {
-        this.salere = salere;
+    public PatientBuilder salaire(float salaire) {
+        this.salaire = salaire;
         return this;
     }
 
@@ -62,6 +62,6 @@ public class PatientBuilder {
     }
 
     public Patient build(){
-        return new Patient(matrecule, nom, prenom, email, salere, statusRetraite, prixRetraite, totaleJourTravail, matreculeSociete, date_naissance);
+        return new Patient(matrecule, nom, prenom, email, salaire, statusRetraite, prixRetraite, totaleJourTravail, matreculeSociete, date_naissance);
     }
 }

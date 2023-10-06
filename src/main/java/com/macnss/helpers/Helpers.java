@@ -464,7 +464,7 @@ public class helpers {
         String td1 = "Matrecule";
         String td2 = "Nom";
         String td3 = "Prenom";
-        String td4 = "Salere";
+        String td4 = "Salaire";
         String td5 = "Status Retraite";
         String td6 = "Les Jours Travails";
 

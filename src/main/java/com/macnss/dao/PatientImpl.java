@@ -221,7 +221,7 @@ public class PatientImpl implements PatientDao{
                 String StatusRetraite;
                 String matrecule = resultSet.getString("matrecule");
                 int totaleJourTravail = resultSet.getInt("totaleJourTravail");
-                int salere = resultSet.getInt("salaire");
+                int salaire = resultSet.getInt("salaire");
                 String date_naissance = resultSet.getString("date_naissance");
 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -246,7 +246,7 @@ public class PatientImpl implements PatientDao{
 
                 if (totaleJourTravail >= 1320 && an >= 55) {
                     StatusRetraite = "Retraite";
-                    PrixRetraite = (float) calculePrixRetraite(salere,totaleJourTravail);
+                    PrixRetraite = (float) calculePrixRetraite(salaire,totaleJourTravail);
                 } else {
                     StatusRetraite = "Non Retraite";
                     PrixRetraite = 0F;

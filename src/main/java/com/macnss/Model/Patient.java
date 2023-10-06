@@ -9,7 +9,7 @@ public class Patient {
     private String nom;
     private String prenom;
     private String email;
-    private float salere;
+    private float salaire;
     private String statusRetraite;
     private float prixRetraite;
     private int totaleJourTravail;
@@ -19,12 +19,12 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(String matrecule, String nom, String prenom, String email, float salere, String statusRetraite, float prixRetraite, int totaleJourTravail, String matreculeSociete, String date_naissance) {
+    public Patient(String matrecule, String nom, String prenom, String email, float salaire, String statusRetraite, float prixRetraite, int totaleJourTravail, String matreculeSociete, String date_naissance) {
         this.matrecule = matrecule;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
-        this.salere = salere;
+        this.salaire = salaire;
         this.statusRetraite = statusRetraite;
         this.prixRetraite = prixRetraite;
         this.totaleJourTravail = totaleJourTravail;
@@ -64,12 +64,12 @@ public class Patient {
         this.email = email;
     }
 
-    public float getSalere() {
-        return salere;
+    public float getSalaire() {
+        return salaire;
     }
 
-    public void setSalere(float salere) {
-        this.salere = salere;
+    public void setSalaire(float salaire) {
+        this.salaire = salaire;
     }
 
     public String getStatusRetraite() {
@@ -123,7 +123,7 @@ public class Patient {
         tr += createTableEmployer(matrecule,"");
         tr += createTableEmployer(nom,"");
         tr += createTableEmployer(prenom,"");
-        tr += createTableEmployer(String.valueOf(salere),"");
+        tr += createTableEmployer(String.valueOf(salaire),"");
         tr += createTableEmployer(statusRetraite,"");
         tr += createTableEmployer(String.valueOf(totaleJourTravail),"");
 

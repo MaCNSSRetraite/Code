@@ -123,7 +123,7 @@ public class SocieteImpl implements SocieteDao{
                 String Matrecule = generateMatrecule(patient.getNom(),patient.getPrenom(),patient.getemail(),3);
                 String StatusRetraite = null;
                 Float PrixRetraite = null;
-                float Salere = patient.getSalere();
+                float Salaire = patient.getSalaire();
                 int totaleJourTravail = patient.getTotaleJourTravail();
                 String date_naissance = patient.getDate_naissance();
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -151,7 +151,7 @@ public class SocieteImpl implements SocieteDao{
 
                 if (totaleJourTravail >= 3240 && an >= 55) {
                     StatusRetraite = "Retraite";
-                    PrixRetraite = (float) calculePrixRetraite(Salere,totaleJourTravail);
+                    PrixRetraite = (float) calculePrixRetraite(Salaire,totaleJourTravail);
                 } else {
                     StatusRetraite = "Non Retraite";
                     PrixRetraite = 0F;
@@ -176,7 +176,7 @@ public class SocieteImpl implements SocieteDao{
                             preparedStatement2.setString(7,patient.getMatreculeSociete());
                             preparedStatement2.setInt(8,totaleJourTravail);
                             preparedStatement2.setString(9,patient.getDate_naissance());
-                            preparedStatement2.setFloat(10,patient.getSalere());
+                            preparedStatement2.setFloat(10,patient.getSalaire());
 
                             preparedStatement2.executeUpdate();
                         } catch (SQLException se){
@@ -185,7 +185,7 @@ public class SocieteImpl implements SocieteDao{
                         String query4 = "INSERT INTO `salaire`(`matrecule`, `salaire`, `date`) VALUES (?,?,?)";
                         try (PreparedStatement preparedStatement4 = con.prepareStatement(query4);){
                             preparedStatement4.setString(1,Matrecule);
-                            preparedStatement4.setFloat(2,patient.getSalere());
+                            preparedStatement4.setFloat(2,patient.getSalaire());
                             preparedStatement4.setDate(3, java.sql.Date.valueOf(dateAjourdhui));
 
                             preparedStatement4.executeUpdate();
@@ -212,7 +212,7 @@ public class SocieteImpl implements SocieteDao{
                             preparedStatement2.setString(7,patient.getMatreculeSociete());
                             preparedStatement2.setInt(8,totaleJourTravail);
                             preparedStatement2.setString(9,patient.getDate_naissance());
-                            preparedStatement2.setFloat(10,patient.getSalere());
+                            preparedStatement2.setFloat(10,patient.getSalaire());
 
                             preparedStatement2.executeUpdate();
                         } catch (SQLException se){
@@ -221,7 +221,7 @@ public class SocieteImpl implements SocieteDao{
                         String query4 = "INSERT INTO `salaire`(`matrecule`, `salaire`, `date`) VALUES (?,?,?)";
                         try (PreparedStatement preparedStatement4 = con.prepareStatement(query4);){
                             preparedStatement4.setString(1,Matrecule);
-                            preparedStatement4.setFloat(2,patient.getSalere());
+                            preparedStatement4.setFloat(2,patient.getSalaire());
                             preparedStatement4.setDate(3, java.sql.Date.valueOf(dateAjourdhui));
 
                             preparedStatement4.executeUpdate();
@@ -271,11 +271,11 @@ public class SocieteImpl implements SocieteDao{
 
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                String query2 = "UPDATE `patient` SET `nom_P`=?,`prenom_P`=?, `salere`=? WHERE `matrecule`=?";
+                String query2 = "UPDATE `patient` SET `nom_P`=?,`prenom_P`=?, `salaire`=? WHERE `matrecule`=?";
                 try (PreparedStatement preparedStatement2 = con.prepareStatement(query2);){
                     preparedStatement2.setString(1,patient.getNom());
                     preparedStatement2.setString(2,patient.getPrenom());
-                    preparedStatement2.setFloat(3,patient.getSalere());
+                    preparedStatement2.setFloat(3,patient.getSalaire());
                     preparedStatement2.setString(4,patient.getMatrecule());
 
                     preparedStatement2.executeUpdate();
