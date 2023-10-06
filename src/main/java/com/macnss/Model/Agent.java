@@ -1,6 +1,6 @@
 package com.macnss.Model;
 
-import static com.macnss.helpers.helpers.*;
+import static com.macnss.helpers.DesignTablesConsol.*;
 public class Agent {
     private int id;
     private String email;
@@ -67,7 +67,7 @@ public class Agent {
 
     @Override
     public String toString() {
-        String tr = /*getJauneColor() +*/ "|";
+        String tr = "|";
 
         tr += createTrTdAgents(String.valueOf(id));
         tr += createTrTdAgents(nom);

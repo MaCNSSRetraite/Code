@@ -1,7 +1,6 @@
 package com.macnss.Model;
 
-import static com.macnss.helpers.helpers.createTrTdTrMedicamentConsultationMedicale;
-//import static com.macnss.helpers.helpers.getJauneColor;
+import static com.macnss.helpers.DesignTablesConsol.createTrTdTrMedicamentConsultationMedicale;
 
 public class ConsultationMedicale {
     private int id;

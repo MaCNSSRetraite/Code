@@ -4,11 +4,13 @@ import com.macnss.Model.*;
 import com.macnss.dao.*;
 import com.macnss.helpers.*;
 
+
 import java.util.Date;
 import java.util.Scanner;
 import java.util.prefs.Preferences;
 
 import static com.macnss.helpers.helpers.*;
+import static com.macnss.helpers.DesignTablesConsol.*;
 import static com.macnss.helpers.Mail.*;
 
 public class Main {

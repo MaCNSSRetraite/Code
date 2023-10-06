@@ -2,7 +2,7 @@ package com.macnss.Model;
 
 import java.util.Date;
 
-import static com.macnss.helpers.helpers.*;
+import static com.macnss.helpers.DesignTablesConsol.*;
 
 public class Patient {
     private String matrecule;
