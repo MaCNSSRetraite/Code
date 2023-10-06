@@ -10,6 +10,13 @@ import java.util.function.IntFunction;
 import java.util.function.Supplier;
 
 public class helpers {
+    public static Integer tryParse(String text) {
+        try {
+            return Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            return 100;
+        }
+    }
     public static int generateCode(){
         Random rand = new Random();
 
@@ -19,7 +26,17 @@ public class helpers {
 
         return Integer.parseInt(codeString);
     }
+    public static String generateMatrecule(String nom, String prenom, String email,int Taille){
+        String Matrecule = null;
 
+        String nomReturn = nom.substring(0, Taille).toUpperCase();
+        String prenomReturn = prenom.substring(0, Taille).toUpperCase();
+        String emailReturn = email.substring(0, Taille).toUpperCase();
+
+        Matrecule = nomReturn + prenomReturn + emailReturn;
+
+        return Matrecule;
+    };
 
     static int td_lenght;
     static int td_lenght_empty;
@@ -416,17 +433,7 @@ public class helpers {
         System.out.println("Programme Fermé");
 
     }
-    public static String generateMatrecule(String nom, String prenom, String email,int Taille){
-        String Matrecule = null;
 
-        String nomReturn = nom.substring(0, Taille).toUpperCase();
-        String prenomReturn = prenom.substring(0, Taille).toUpperCase();
-        String emailReturn = email.substring(0, Taille).toUpperCase();
-
-        Matrecule = nomReturn + prenomReturn + emailReturn;
-
-        return Matrecule;
-    };
 
     public static String createTableEmployer(String emptyNoEmpty, String style){
         String tr;
@@ -569,13 +576,7 @@ public class helpers {
         }
         return tr;
     }
-    public static Integer tryParse(String text) {
-        try {
-            return Integer.parseInt(text);
-        } catch (NumberFormatException e) {
-            return 100;
-        }
-    }
+
 
 
 }
